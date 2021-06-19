@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../CSS/ChiTietSanPham.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="image_logo"> <img src="../image/download.png" alt="logo" width="80px" height="80px"></div>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search" class="input">
+                <div class="icon_search"> <i class="fas fa-search color_icon"></i></div>
+            </div>
+            <div class="icon">
+                <div class="cart">
+                    <i class="fas fa-shopping-cart icon_cart"></i>
+                    <div class="amount">1</div>
+                </div>
+                <div class="account"><img class="image" src="../image/anh.jpg" alt="username"> </div>
+            </div>
+        </div>
+        <div class="contener">
+            <div class="detail-image">
+                    <img src="../image/iphone-12pro.jpg" alt="iphone" class="image__product">
+            </div>
+            <div class="detail-product">
+                <div class="name-product">
+                    <h2>Apple iPhone 12 Pro 128GB Chính Hãng </h2>
+                </div>
+                <div class="price"> 26.350.000 <sub>đ</sub></div>
+                <div class="amount-product">
+                    <div>Số lượng</div>
+                    <div class="tile">
+                        <div class="minus" id="minus" onclick="minus()" >-</div>
+                        <div class="count" id="count">1</div>
+                        <div class="minus" id="plus" onclick="plus()">+</div>
+                    </div>
+                    <div> Sản Phẩm có sãn</div>
+                </div>
+                <div class="buy">
+                    <div class="buy-more">
+                        <i class="fas fa-cart-plus"></i>
+                        thêm giỏ hàng
+                    </div>
+                    <div class="buy-buy">Mua ngay</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="information">
+                <p class="name-information">Cơ quan chủ quản: Học viện Kỹ thuật Mật mã </p>
+                <p class="name-information">Địa chỉ: 141 đường Chiến Thắng, Tân Triều, Thanh Trì, Hà Nội</p>
+            </div>
+            <div class="social-netword">
+                <p class="name-information">Mạng xã hội:</p>
+                <div class="center-icon">
+                    <div class="facebook-icon icon-footer">
+                        <i class="fab fa-facebook-f social-icon__corlor"></i>
+                    </div>
+                    <div class="twitter-icon icon-footer">
+                        <i class="fab fa-twitter social-icon__corlor"></i>
+                    </div>
+                    <div class="google-icon icon-footer">
+                        <i class="fab fa-google social-icon__corlor"></i>
+                    </div>
+                    <div class="wifi-icon icon-footer">
+                        <i class="fas fa-wifi social-icon__corlor"></i>
+                    </div>
+                    <div class="youtobe-icon icon-footer">
+                        <i class="fab fa-youtube social-icon__corlor"></i>
+                    </div>
+                    <div class="email-icon icon-footer">
+                        <i class="fas fa-envelope social-icon__corlor"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="../js/ChiTietSanPham.js"></script>
+
+</html>

@@ -1,0 +1,121 @@
+body{
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px;
+  
+}
+h2{
+    
+    text-align: center;
+
+}
+.label{
+    margin: 10px;
+    
+}
+.center{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 500px;
+    background-color: white;
+    flex-direction: column;
+    border-radius: 5px;
+    position: relative;
+    
+}
+.mosty{
+margin-top: 10px;
+border-bottom: 1px solid #757575;
+}
+.input{
+    border: none;
+    outline: none;
+    bottom: 10px;
+    width: 225px;
+    margin-bottom: 8px;
+
+}
+.forgot{
+    flex-direction: column;
+    margin-top: 0px;
+    height: 30px;
+}
+p{
+    flex-direction: column;
+    text-align: right;
+    width: 100%;
+    margin-top: 5px;
+   font-size: 13px;
+}
+
+.submit{
+    width: 225px;
+    height: 30px;
+    background-color: turquoise;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    border: none;
+    color: white    ;
+    cursor: pointer;
+}
+.Sign{
+    position: absolute;
+    bottom: 20px;
+    size: 5px;
+}
+.sing-up{
+    font-size: 13px;
+}
+.icon{
+    display: flex;
+    margin-top: 20px;
+}
+.icon-fb{
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    border-radius: 100%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.color{
+    flex-direction: column;
+    color: white;
+    text-align: center;
+   
+}
+.icon-tw{
+    width: 30px;
+    height: 30px;
+    background-color: #1298f6;
+    border-radius: 100%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.icon-gg{
+    width: 30px;
+    height: 30px;
+    background-color: #ea4335;
+    border-radius: 100%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mosty__icon{
+    color: #757575;
+}
+.error{
+    color:  red;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="/styles/DangKy.css" />
+<link rel="stylesheet" href="/styles/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+  crossorigin="anonymous" />
+
+<head> </head>
+
+<body style="background-image: url(/images/nền.jpg)">
+  <div class="center">
+    <h2>Register</h2>
+    <!-- onsubmit="return register()" -->
+    <form action="/user/signUp" method="post"onsubmit="return register()">
+      <div class="label">
+        Username <br />
+        <div class="mosty">
+          <i class="fas fa-user mosty__icon"></i>
+          <% if(typeof user !=="undefined" ) { %>
+            <input class="input" id="userName" name="name" type="text" placeholder="Type your username"
+            value="<%= user.name %>"
+            onkeyup="checkValidateUserName()" />
+              <% } else { %>
+          <input class="input" id="userName" name="name" type="text" placeholder="Type your username"
+
+            onkeyup="checkValidateUserName()" />
+            <% } %>
+        </div>
+        <div id="error_username" class="error"></div>
+      </div>
+      <div class="label">
+        email <br />
+        <div class="mosty">
+          <input class="input" id="email" name="email" type="text" placeholder="mail@example.com"
+            onkeyup="checkValidateEmail()" />
+          <i class="fas fa-envelope color"></i>
+        </div>
+        <div id="error_email" class="error">
+          <% if(typeof error !=="undefined" ) { %>
+            <%= error %>
+              <% } %>
+        </div>
+      </div>
+      <div class="label">
+        Password <br />
+        <div class="mosty">
+          <i class="fas fa-lock mosty__icon"></i>
+          <% if(typeof user !=="undefined" ) { %>
+          <input id="password" name="password" type="password" class="input" placeholder="Type your password"
+          value="<%= user.password %>"
+            onkeyup="checkvalidatepassword()" />
+            <% } else { %>
+              <input id="password" name="password" type="password" class="input" placeholder="Type your password"
+              onkeyup="checkvalidatepassword()" />
+              <% } %>
+        </div>
+        <div id="error_password" class="error"></div>
+      </div>
+      <div class="label">
+        Confirm password <br />
+        <div class="mosty">
+          <i class="fas fa-lock mosty__icon"></i>
+          <% if(typeof user !=="undefined" ) { %>
+          <input id="confirm" type="password" class="input" placeholder="Type your password" 
+          value="<%= user.password %>"
+          onkeyup="checkvalidatepassword()" />
+          <% } else { %>
+          <input id="confirm" type="password" class="input" placeholder="Type your password" 
+          onkeyup="checkvalidatepassword()" />
+          <% } %>
+        </div>
+        <div id="error_confirm" class="error"></div>
+      </div>
+      <div class="d-fex justify-content">
+        <button class="submit" onclick="register()" type="submit">
+          REGISTER
+        </button>
+      </div>
+    </form>
+
+    <div class="icon">
+      <div class="icon-fb">
+        <i class="fab fa-facebook-f color"></i>
+      </div>
+      <div class="icon-tw">
+        <i class="fab fa-twitter color"></i>
+      </div>
+      <div class="icon-gg">
+        <i class="fab fa-google color"></i>
+      </div>
+    </div>
+    <div class="Sign">
+      <a href="/user" class="sing-up">SING IN</a>
+    </div>
+  </div>
+  <script src="/js/DangKy.js">
+
+  </script>
+  
+</body>
+
+</html>

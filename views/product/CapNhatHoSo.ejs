@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../CSS/CapNhatHoSo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="image_logo"> <img src="../image/download.png" alt="logo" width="80px" height="80px"></div>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search" class="input">
+                <div class="icon_search"> <i class="fas fa-search color_icon"></i></div>
+            </div>
+            <div class="icon">
+                <div class="cart">
+                    <i class="fas fa-shopping-cart icon_cart"></i>
+                    <div class="amount">1</div>
+                </div>
+                <div class="account"><img class="image" src="../image/anh.jpg" alt="username"> </div>
+            </div>
+        </div>
+        <div class="centener">
+            <div class="brief-name">
+                <img src="../image/anh.jpg" alt="username" class="image__username">
+                <p class="username">Hà Duẩn</p>
+            </div>
+            <div class="center-contener">
+                <div class="title-brief">
+                    <h3> Hồ Sơ Của Tôi</h3>
+                    Quản lý thông tin hồ sơ
+                </div>
+                <div class="update-brief">
+                    <div class="update-center">
+                        <div class="update-name__login">
+                            <div class="title__login"> Tên Đăng Nhập</div>
+                            <div class="name__login"> Hà Duẩn</div>
+                        </div>
+                        <div class="update__name">
+                            <div class="title__name">Tên</div>
+                            <input type="text" id="name" class="name__input" placeholder="Tên">
+                        </div>
+                        <div class="error" id="error_name"></div>
+                        <div class="email">
+                            <div class="email-name"> email</div>
+                            <div class="email-title">
+                                <div class="name__email" > haduan@gmail.com</div>
+                                <input type="text" id="name-email" onkeyup="checkEmail()" 
+                                class="email__new" placeholder="Nhập email mới của bạn">
+                                <input type="password" class="pass-email__new" placeholder="pass" id="pass-email" onkeyup="checkPass()">
+                            </div> 
+                        </div>
+                               <div class="error" id="error_email"></div>
+
+                        <div class="name-customer">
+                            <div class="title__customer">Tên Shop</div>
+                            <div class="name-customer__title">Hà Duẩn</div>
+                        </div>
+                        <div class="sex">
+                            <div class="title-sex">Giới tính</div>
+                            <div class="title-sex-name">
+                                <form name="theForm"> 
+                                    <input type="checkbox" id="nam" name="theGroup" onClick="clearGroup(this);">Nam
+                                    <input type="checkbox" id="nu" name="theGroup" onClick="clearGroup(this);">Nữ
+                                    <input type="checkbox" id="khac" name="theGroup" onClick="clearGroup(this);">Khác
+                                </form>
+                                
+                            </div>
+                        </div>
+                        <div class="birthday">
+                            <div class="birthday-title">Ngày Sinh</div>
+                            <div class="birthday-specifically">
+                                <input type="date" id="ngay" class="birthday-specifically__name" placeholder="Ngày">
+                            </div>
+                        </div> <div class="error" id="error_date"></div>
+                        <button class="submit" type="submit" id="submit" onclick="seve()">
+                            Lưu
+                        </button>
+                    </div>
+                    <div class="represent">
+                        <img src="../image/anh.jpg" alt="anh" class="image__represent">
+                        <div class="choose__represent">Chọn Ảnh</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="information">
+                <p class="name-information">Cơ quan chủ quản: Học viện Kỹ thuật Mật mã </p>
+                <p class="name-information">Địa chỉ: 141 đường Chiến Thắng, Tân Triều, Thanh Trì, Hà Nội</p>
+            </div>
+            <div class="social-netword">
+                <p class="name-information">Mạng xã hội:</p>
+                <div class="center-icon">
+                    <div class="facebook-icon icon-footer">
+                        <i class="fab fa-facebook-f social-icon__corlor"></i>
+                    </div>
+                    <div class="twitter-icon icon-footer">
+                        <i class="fab fa-twitter social-icon__corlor"></i>
+                    </div>
+                    <div class="google-icon icon-footer">
+                        <i class="fab fa-google social-icon__corlor"></i>
+                    </div>
+                    <div class="wifi-icon icon-footer">
+                        <i class="fas fa-wifi social-icon__corlor"></i>
+                    </div>
+                    <div class="youtobe-icon icon-footer">
+                        <i class="fab fa-youtube social-icon__corlor"></i>
+                    </div>
+                    <div class="email-icon icon-footer">
+                        <i class="fas fa-envelope social-icon__corlor"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="../js/CapNhapHoSo.js"></script>
+
+</html>
