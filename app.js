@@ -88,7 +88,7 @@ app.get('/showClassById', (req, res) => {
                 }
                 
                 let sqlUpdate = "UPDATE class SET ?"
-                db.query(sqlUpdate, updateData, (error) => {
+                db.query(sqlUpdate, updateData, (error) => {    
                     if (error) throw error;
                     else {
                         res.send("update class success")
@@ -135,6 +135,8 @@ app.get('/removeClass', (req, res) => {
 app.use('/user', userRoute)
 app.use('/Home', HomeRoute )
 app.use('/product', productRoute)
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
