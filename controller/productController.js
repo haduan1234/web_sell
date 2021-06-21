@@ -1,23 +1,32 @@
 import db from '../db.js'
 
 const index = (req, res) => {
-    let id = req.query.id
-    let sql = "Select * from product where id ="+id
-    db.query(sql, (error, results) => {
-        if (error) throw error;
-        else {
-            if(results.length>0){
-                res.render('product/Create',{
-                    editProduct: results[0]
-            
-                })
-                console.log( results)
+    if (typeof req.query.id !== "undefined"){
+        let id = req.query.id
+        console.log("id :" ,id)
+        let sql = "Select * from product where id =" + id
+        db.query(sql, (error, results) => {
+            if (error) throw error;
+            else {
+                console.log("product:", results[0].image)
+                if (results.length > 0) {
+                  return  res.render('product/Create', {
+                        editProduct: results[0]
+                        
+                    })
+                }
             }
-
-        }
-    })
+          
+        })
+    }else{
+         res.render('product/Create')
+    }
+   
 }
-const postCreate = async (req, res) => {
+
+
+const postCreate = (req, res, next) => {
+    req.body.image = req.file.path.split('\\').slice(1).join('\\')
     let product = req.body
     let sql = "Select * from product where name = ?"
     db.query(sql, product.name, (error, results) => {
@@ -38,6 +47,9 @@ const postCreate = async (req, res) => {
             })
         }
     })
+
+    let id = req.query.id
+    console.log("id :", id)
 }
 const show = (req, res) => {
     let sql = "SELECT * FROM product"
@@ -94,11 +106,12 @@ const deleteProduct = (req, res) => {
         }
     })
 }
+
 const controllerProduct = {
     index,
     postCreate,
     show,
-    deleteProduct
+    deleteProduct,
 }
 
 export default controllerProduct

@@ -4,9 +4,12 @@ import userRoute from './route/userRoute.js'
 import HomeRoute from './route/HomeRoute.js'
 import productRoute from './route/productRoute.js'
 
+
 import db from './db.js'
 
 db.connect();
+
+
 
 const app = express()
 const port = 3000

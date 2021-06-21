@@ -47,28 +47,51 @@
                 <div class="row pb-2">
                     <div class="col-md-6 col-sm-12">
                         <div for="exampleFormControlFile1 d-block">Tên sản phẩm</div>
-                        <input class="form-control form-control-lg" name="name" type="text" placeholder=".Name_product"
-                        value="<%= editProduct.name %>" aria-label=".form-control-lg example">
+                        <% if(typeof editProduct !=="undefined" ) { %>
+                            <input class="form-control form-control-lg" name="name" type="text"
+                                placeholder=".Name_product" value="<%= editProduct.name %>"
+                                aria-label=".form-control-lg example">
+                            <% } else { %>
+                                <input class="form-control form-control-lg" name="name" type="text"
+                                    placeholder=".Name_product" aria-label=".form-control-lg example">
+                                <% } %>
 
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div for="exampleFormControlFile1 d-block">Giá sản phẩm</div>
-                        <input class="form-control form-control-lg" name="price" type="text"
-                            placeholder=".Price_product" aria-label="default input example">
+                        <% if(typeof editProduct !=="undefined" ) { %>
+                            <input class="form-control form-control-lg" name="price" type="text"
+                                value="<%= editProduct.price %>" placeholder=".Price_product"
+                                aria-label="default input example">
+                            <% } else { %>
+                                <input class="form-control form-control-lg" name="price" type="text"
+                                    placeholder=".Price_product" aria-label="default input example">
+                                <% } %>
                     </div>
                 </div>
 
                 <div class="row pb-2">
                     <div class="col-md-6 col-sm-12">
                         <div for="exampleFormControlFile1 d-block">Tên nhà sản xuất</div>
-                        <input class="form-control form-control-lg" name="brand" type="text"
-                            placeholder=".Brand_product" aria-label=".form-control-lg example">
-
+                        <% if(typeof editProduct !=="undefined" ) { %>
+                            <input class="form-control form-control-lg" name="brand" type="text"
+                                value="<%= editProduct.brand %>" placeholder=".Brand_product"
+                                aria-label=".form-control-lg example">
+                            <% } else { %>
+                                <input class="form-control form-control-lg" name="brand" type="text"
+                                    placeholder=".Brand_product" aria-label=".form-control-lg example">
+                                <% } %>
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div for="exampleFormControlFile1 d-block">Số lượng sản phẩm</div>
-                        <input class="form-control form-control-lg" name="amount" type="text"
-                            placeholder=".Amount_product" aria-label="default input example">
+                        <% if(typeof editProduct !=="undefined" ) { %>
+                            <input class="form-control form-control-lg" name="amount" type="text"
+                                value="<%= editProduct.amount %>" placeholder=".Amount_product"
+                                aria-label="default input example">
+                            <% } else { %>
+                                <input class="form-control form-control-lg" name="amount" type="text"
+                                    placeholder=".Amount_product" aria-label="default input example">
+                                <% } %>
                     </div>
                     <div class="row pb-2">
                         <!-- <div class="col-md-6 col-sm-12">
@@ -80,7 +103,13 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <div for="exampleFormControlFile1 d-block">Chọn ảnh</div>
-                                <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+                                <% if(typeof editProduct !=="undefined" ) { %>
+                                    <input type="file"  value="\<%= editProduct.image %>"
+                                        name="image" id="a">
+                                    <% } else { %>
+                                        <input type="file" class="form-control-file" name="image"
+                                            id="exampleFormControlFile1">
+                                        <% } %>
                             </div>
                         </div>
                     </div>
