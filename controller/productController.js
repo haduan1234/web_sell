@@ -1,56 +1,89 @@
 import db from '../db.js'
 
 const index = (req, res) => {
-    if (typeof req.query.id !== "undefined"){
+    if (typeof req.query.id !== "undefined") {
         let id = req.query.id
-        console.log("id :" ,id)
         let sql = "Select * from product where id =" + id
         db.query(sql, (error, results) => {
             if (error) throw error;
             else {
                 console.log("product:", results[0].image)
                 if (results.length > 0) {
-                  return  res.render('product/Create', {
-                        editProduct: results[0]
-                        
+                    return res.render('product/create', {
+                        editProduct: results[0],
                     })
                 }
             }
-          
+
         })
-    }else{
-         res.render('product/Create')
+    } else {
+        res.render('product/create')
     }
-   
+
 }
 
 
 const postCreate = (req, res, next) => {
-    req.body.image = req.file.path.split('\\').slice(1).join('\\')
-    let product = req.body
-    let sql = "Select * from product where name = ?"
-    db.query(sql, product.name, (error, results) => {
-        if (error) throw error;
-        else {
-            if (results.length > 0) {
-                res.render('product/Create', {
-                    error: "sản phẩm đã có"
+    if (typeof req.body.id !== "undefined") {
+        let id = req.body.id
+        let sql = "Select * from product where id =" + id
+        db.query(sql, (error, results) => {
+            if (error) throw error;
+            else {
+                if (results.length > 0) {
+                    req.body.image = req.file.path.split('\\').slice(1).join('\\')
+                    let updateProduct = {
+                        id: req.body.id,
+                        name: req.body.name,
+                        price: req.body.price,
+                        brand: req.body.brand,
+                        image: req.body.image,
+                        amount: req.body.amount
+                    }
+                    let id = req.body.id
+                    let sqlUpdate = "UPDATE product SET ? WHERE id=" + id
+                    db.query(sqlUpdate, updateProduct, (error, results) => {
+                        if (error) throw error;
+                        else {
+                            let sql = "SELECT * FROM product"
+                            db.query(sql, (error, results) => {
+                                if (error) throw error;
+                                else {
+                                    res.render('product/show', {
+                                        product: results
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
+            }
+        })
+    } else {
+        req.body.image = req.file.path.split('\\').slice(1).join('\\')
+        let product = req.body
+        let sql = "Select * from product where name = ?"
+        db.query(sql, product.name, (error, results) => {
+            if (error) throw error;
+            else {
+                if (results.length > 0) {
+                    res.render('product/create', {
+                        error: "sản phẩm đã có"
+                    })
+                }
+                let sqlInsert = "INSERT INTO product SET ?"
+                db.query(sqlInsert, product, (error, results) => {
+                    if (error) throw error
+
+                    else {
+                        res.render('product/create')
+                    }
                 })
             }
-            let sqlInsert = "INSERT INTO product SET ?"
-            db.query(sqlInsert, product, (error, results) => {
-                if (error) throw error
-
-                else {
-                    res.render('product/Create')
-                }
-            })
-        }
-    })
-
-    let id = req.query.id
-    console.log("id :", id)
+        })
+    }
 }
+
 const show = (req, res) => {
     let sql = "SELECT * FROM product"
     db.query(sql, (error, results) => {
@@ -107,11 +140,24 @@ const deleteProduct = (req, res) => {
     })
 }
 
+const search = (req, res) => {
+ let name = req.query.search
+ let sql = "Select * from class where name like "
+    var query =  db.query(sql, `%${name}%`, (error, results) => {
+        if (error) throw error;
+        else {
+
+        } 
+    })
+
+}
+
 const controllerProduct = {
     index,
     postCreate,
     show,
     deleteProduct,
+    search
 }
 
 export default controllerProduct
