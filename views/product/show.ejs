@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/showProduct.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
@@ -15,8 +16,8 @@
 </head>
 
 <body>
-    <div class="d-flex p-3">
-        <div class="d-flex align-items-start">
+    <div class="d-flex ">
+        <div class="d-flex align-items-start navi">
             <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
@@ -45,7 +46,8 @@
         <div class="p-5">
             <div class="d-flex" style="justify-content: space-between;">
                 <div class="px-1">
-                    <button type="button" class="btn btn-success"><a href="/product/create" style="color: white;  text-decoration: none;" >Create product</a></button>
+                    <button type="button" class="btn btn-success"><a href="/product/create"
+                            style="color: white;  text-decoration: none;">Create product</a></button>
                 </div>
                 <div class="search ps-5">
                     <form class="ml-auto d-flex" action="/product/search" method="GET">
@@ -126,7 +128,23 @@
 
                     </tbody>
                 </table>
-                <!-- Button trigger modal -->
+                <div class="naviPage ">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+.                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
 
         </div>

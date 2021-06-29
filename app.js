@@ -3,6 +3,8 @@ import mysql from 'mysql'
 import userRoute from './route/userRoute.js'
 import HomeRoute from './route/HomeRoute.js'
 import productRoute from './route/productRoute.js'
+import detailRoute from "./route/detialProductRoute.js"
+import cartRoute from './route/cartRoute.js'
 
 
 import db from './db.js'
@@ -12,7 +14,7 @@ db.connect();
 
 
 const app = express()
-const port = 3000
+const port = 3007
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -138,7 +140,8 @@ app.get('/removeClass', (req, res) => {
 app.use('/user', userRoute)
 app.use('/Home', HomeRoute )
 app.use('/product', productRoute)
-
+app.use('/detail', detailRoute)
+app.use('/cart', cartRoute)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

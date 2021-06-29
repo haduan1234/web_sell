@@ -18,9 +18,16 @@
             <div class="logo">
                 <div class="image_logo"> <img src="/images/download.png" alt="logo" width="80px" height="80px"></div>
             </div>
-            <div class="search">
-                <input type="text" placeholder="Search" class="input">
-                <div class="icon_search"> <i class="fas fa-search color_icon"></i></div>
+            <div class="search ps-5">
+                <form class="ml-auto d-flex" action="/home/search" method="GET">
+                    <% if(typeof name !=="undefined" ) { %>
+                        <input type="text" value="<%= name %>" placeholder="Search" class="input" name="search">
+                        <% } else { %>
+                            <input type="text" placeholder="Search" class="input" name="search">
+                            <% } %>
+                                <div class="icon_search" style="color: white;"> <i class="fas fa-search color_icon"></i>
+                                </div>
+                </form>
             </div>
             <div class="icon">
                 <div class="cart">
@@ -48,56 +55,43 @@
             <p class="name-line">Mặt hàng</p>
         </div>
         <div class="category">
-            <div class="items">
-                <img src="/images/computer.jpg" alt="computer" class="image_items">
-                <p class="id">Máy tính</p>
-            </div>
-            <div class="items">
-                <img src="/images/phone.jpg" alt="phone" class="image_items">
-                <p class="id">Điện Thoại</p>
-            </div>
+
+            <a href="/home/computer" style="text-decoration:none ">
+                <div class="items">
+                    <img src="/images/computer.jpg" alt="computer" class="image_items">
+                    <p class="id">Máy tính</p>
+                </div>
+            </a>
+
+            <a href="/home/phone" style="text-decoration:none">
+                <div class="items">
+                    <img src="/images/phone.jpg" alt="phone" class="image_items">
+                    <p class="id">Điện Thoại</p>
+                </div>
+            </a>
         </div>
         <div class="line">
             <p class="name-line">Sản Phẩm</p>
         </div>
         <div class="product">
-            <div class="iphone" id="1">
-                <div class="div_iamage">
-                    <img src="/images/iphone-12pro.jpg" alt="iphone-12" class="iphone-id__image">
+
+            <% product.forEach(function(p, index){ %>
+
+                <div class="iphone" id="9">
+                    <a href="/detail?id=<%= p.id%> " class="pb-2" style="text-decoration: none; color: black;">
+                        <img src="\<%= p.image%>" alt="macbook" class="iphone-id__image">
+                        <p class="name-prsoduct">
+                            <%= p.name%>
+                        </p>
+                        <p class="price-product">
+                            <%= p.price%> đ
+                        </p>
+
+
+                    </a>
                 </div>
-                <p class="name-product">Apple Iphone 12 Pro Max 128GB </p>
-                <p class="price-product">28,950,00 đ</p>
-            </div>
-            <div class="iphone" id="2">
-                <img src="/images/thumb_11-ProMAX_4.jpg" alt="iphone-11" class="iphone-id__image">
-                <p class="name-product">Apple Iphone 11 Pro Max 128GB</p>
-                <p class="price-product">20,490,00 đ</p>
-            </div>
-            <div class="iphone" id="3">
-                <img src="/images/thumb_IP12Pro_3.jpg" alt="iphone-12" class="iphone-id__image">
-                <p class="name-product">Apple Iphone 12 Pro Max 128GB </p>
-                <p class="price-product">31,750,00 đ</p>
-            </div>
-            <div class="iphone" id="4">
-                <img src="/images/macbook.jpg" alt="macbook" class="iphone-id__image">
-                <p class="name-product">Macbook Pro M1 16G 512GB </p>
-                <p class="price-product">37,750,00 đ</p>
-            </div>
-            <div class="iphone" id="5">
-                <img src="/images/thumb_MBP_M1-1.jpg" alt="macbook" class="iphone-id__image">
-                <p class="name-product">Macbook Ari M1 16G 512GB </p>
-                <p class="price-product">37,990,00 đ</p>
-            </div>
-            <div class="iphone" id="6">
-                <img src="/images/macbook.jpg" alt="macbook" class="iphone-id__image">
-                <p class="name-product">Macbook Pro M1 16G 512GB </p>
-                <p class="price-product">37,750,00 đ</p>
-            </div>
-            <div class="iphone" id="7">
-                <img src="/images/thumb_MBP_M1-1.jpg" alt="macbook" class="iphone-id__image">
-                <p class="name-prsoduct">Macbook Ari M1 16G 512GB </p>
-                <p class="price-product">37,990,00 đ</p>
-            </div>
+
+                <% }); %>
         </div>
         <div class="footer">
             <div class="information">
@@ -129,9 +123,7 @@
             </div>
 
         </div>
-
     </div>
-
 </body>
 <script src="/js/HomePage.js"></script>
 

@@ -7,7 +7,6 @@ const index = (req, res) => {
         db.query(sql, (error, results) => {
             if (error) throw error;
             else {
-                console.log("product:", results[0].image)
                 if (results.length > 0) {
                     return res.render('product/create', {
                         editProduct: results[0],
@@ -84,13 +83,23 @@ const postCreate = (req, res, next) => {
     }
 }
 
-const show = (req, res) => {
+const show = async (req, res) => {
+    var page = parseInt(req.query.page) || 1 ;      
+    var perPage = 6;
+    var start = (page - 1) *perPage
+    var end = page * perPage
+
+   
+   
+
     let sql = "SELECT * FROM product"
     db.query(sql, (error, results) => {
         if (error) throw error;
         else {
+           var pageLength = Math.floor(results.length/perPage) + 1
             res.render('product/show', {
-                product: results
+                product: results.slice(start,end),
+               page
             })
         }
     })
@@ -135,17 +144,20 @@ const deleteProduct = (req, res) => {
                         })
                     }
                 })
-            }
+               }
         }
     })
 }
 
 const search = (req, res) => {
  let name = req.query.search
- let sql = "Select * from class where name like "
-    var query =  db.query(sql, `%${name}%`, (error, results) => {
+ let sql = "Select * from product where name like "+`'%${name}%'`
+    var query =  db.query(sql, (error, results) => {
         if (error) throw error;
         else {
+            res.render('product/show', {
+                product: results
+            })
 
         } 
     })
@@ -159,5 +171,5 @@ const controllerProduct = {
     deleteProduct,
     search
 }
-
+ 
 export default controllerProduct

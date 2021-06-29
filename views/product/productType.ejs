@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/styles/HomePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="image_logo"> <img src="/images/download.png" alt="logo" width="80px" height="80px"></div>
+            </div>
+            <div class="search ps-5">
+                <form class="ml-auto d-flex" action="/home/search" method="GET">
+                    <input type="text" placeholder="Search" class="input" name="search">
+                    <div class="icon_search" style="color: white;"> <i class="fas fa-search color_icon"></i></div>
+                </form>
+            </div>
+            <div class="icon">
+                <div class="cart">
+                    <i class="fas fa-shopping-cart icon_cart"></i>
+                    <div class="amount">1</div>
+                </div>
+                <div class="account"><img class="image" src="/images/anh.jpg" alt="username"> </div>
+            </div>
+        </div>
+        <div class="line">
+            <p class="name-line">Sản Phẩm</p>
+        </div>
+        <div class="product">
+           
+            <% product.forEach(function(p, index){ %>
+                <!-- <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-3"> -->
+                <div class="iphone" id="9">
+                    <a href="/detail?id=<%= p.id%> " class="pb-2" style="text-decoration: none; color: black;">
+                        <img src="\<%= p.image%>" alt="macbook" class="iphone-id__image">
+                        <p class="name-prsoduct">
+                            <%= p.name%>
+                        </p>
+                        <p class="price-product">
+                            <%= p.price%> đ
+                        </p>
+                    </a>
+                </div>
+                <% }); %>
+        </div>
+        
+</body>
+<script src="/js/HomePage.js"></script>
+
+</html>

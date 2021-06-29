@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../CSS/ChiTietSanPham.css">
+    <link rel="stylesheet" href="/styles/ChiTietSanPham.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
@@ -16,7 +16,7 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <div class="image_logo"> <img src="../image/download.png" alt="logo" width="80px" height="80px"></div>
+                <div class="image_logo"> <img src="/images/download.png" alt="logo" width="80px" height="80px"></div>
             </div>
             <div class="search">
                 <input type="text" placeholder="Search" class="input">
@@ -27,18 +27,18 @@
                     <i class="fas fa-shopping-cart icon_cart"></i>
                     <div class="amount">1</div>
                 </div>
-                <div class="account"><img class="image" src="../image/anh.jpg" alt="username"> </div>
+                <div class="account"><img class="image" src="/images/anh.jpg" alt="username"> </div>
             </div>
         </div>
         <div class="contener">
             <div class="detail-image">
-                    <img src="../image/iphone-12pro.jpg" alt="iphone" class="image__product">
+                    <img src="/<%= detailProduct.image%>" alt="iphone" class="image__product">
             </div>
             <div class="detail-product">
                 <div class="name-product">
-                    <h2>Apple iPhone 12 Pro 128GB Chính Hãng </h2>
+                    <h2><%= detailProduct.name%> </h2>
                 </div>
-                <div class="price"> 26.350.000 <sub>đ</sub></div>
+                <div class="price"> <%= detailProduct.price%> <sub>đ</sub></div>
                 <div class="amount-product">
                     <div>Số lượng</div>
                     <div class="tile">
@@ -46,14 +46,14 @@
                         <div class="count" id="count">1</div>
                         <div class="minus" id="plus" onclick="plus()">+</div>
                     </div>
-                    <div> Sản Phẩm có sãn</div>
+                    <div> <%= detailProduct.amount%> San pham co san</div>
                 </div>
                 <div class="buy">
                     <div class="buy-more">
                         <i class="fas fa-cart-plus"></i>
                         thêm giỏ hàng
                     </div>
-                    <div class="buy-buy">Mua ngay</div>
+                  <a href="/cart?id=<%= detailProduct.id%>" style="text-decoration: none;"><div class="buy-buy">Mua ngay</div></a>
                 </div>
             </div>
         </div>

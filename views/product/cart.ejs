@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../CSS/GioHang.css">
+    <link rel="stylesheet" href="/styles/GioHang.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
@@ -16,7 +16,7 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <div class="image_logo"> <img src="../image/download.png" alt="logo" width="80px" height="80px"></div>
+                <div class="image_logo"> <img src="/images/download.png" alt="logo" width="80px" height="80px"></div>
             </div>
             <div class="search">
                 <input type="text" placeholder="Search" class="input">
@@ -27,7 +27,7 @@
                     <i class="fas fa-shopping-cart icon_cart"></i>
                     <div class="amount">1</div>
                 </div>
-                <div class="account"><img class="image" src="../image/anh.jpg" alt="username"> </div>
+                <div class="account"><img class="image" src="/images/anh.jpg" alt="username"> </div>
             </div>
         </div>
         <div class="centener">
@@ -43,11 +43,11 @@
             </div>
             <div class="details-product">
                 <div class="details-product__image">
-                    <img src="../image/iphone-12pro.jpg" alt="iphone" class="image__details">
-                    <div class="details-product__name">Apple iPhone 12 Pro 128GB Chính Hãng</div>
+                    <img src="\<%= cart.image%>" alt="iphone" class="image__details">
+                    <div class="details-product__name"><%= cart.name%></div>
                 </div>
                 <div class="details-price">
-                    <div class="details-price__name" id="price">26,350,000 </div>
+                    <div class="details-price__name" id="price"><%= cart.price%> </div>
                     <div class="details-price__name">
                         <div class="minus" id="minus" onclick="minus()">-</div>
                         <div class="count" id="count">1</div>
@@ -108,7 +108,7 @@
                     <h3 style="color: #e54940e0;">Thanh toán khi nhận hàng</h3>
                 </div>
                 <div class="comfirm">
-                    <a style="text-decoration: none;" href="../HTML/HomePage.html">
+                    <a style="text-decoration: none;" href="/home">
                         <div class="continue">Tiếp tục mua hàng </div>
                     </a>
                     <div class="comfirm-price"> Đặt hàng</div>
@@ -150,6 +150,6 @@
     </div>
 
 </body>
-<script src="../js/Giohang.js"></script>
+<script src="/js/Giohang.js"></script>
 
 </html>

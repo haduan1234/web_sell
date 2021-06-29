@@ -95,13 +95,19 @@
                                 <% } %>
                     </div>
                     <div class="row pb-2">
-                        <!-- <div class="col-md-6 col-sm-12">
-                            <div for="exampleFormControlFile1 d-block">Màu sắc</div>
-                            <input class="form-control form-control-lg" name="color" type="text"
-                                placeholder=".Color_product" aria-label=".form-control-lg example">
-
-                        </div> -->
                         <div class="col-md-6 col-sm-12">
+                            <div for="exampleFormControlFile1 d-block">Loại</div>
+                            <% if(typeof editProduct !=="undefined" ) { %>
+                            <input class="form-control form-control-lg" name="product_type" type="text"
+                            value="<%= editProduct.product_type %>"
+                                placeholder=".Type_product" aria-label=".form-control-lg example">
+                                <% } else { %>
+                                    <input class="form-control form-control-lg" name="product_type" type="text"
+                                    placeholder=".Type_product" aria-label=".form-control-lg example">
+                                    <% } %>
+
+                        </div>
+                        <div class="col-md-6 col-sm-12 mt-3">
                             <div class="form-group">
                                 <div for="exampleFormControlFile1 d-block">Chọn ảnh</div>
                                 <% if(typeof editProduct !=="undefined" ) { %>
@@ -119,10 +125,10 @@
                                                         placeholder=".Price_product" aria-label="default input example">
                                                     <% } %>
                                             </div>
+                                            <div>
+                                                <button type="submit" class="stylebutton mt-3">CREATE</button>
+                                            </div>
                             </div>
-                        </div>
-                        <div>
-                            <button type="submit" class="stylebutton mt-2">CREATE</button>
                         </div>
                     </div>
                     </from>
