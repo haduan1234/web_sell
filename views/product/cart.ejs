@@ -3,9 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="/styles/GioHang.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,89 +30,94 @@
         </div>
         <div class="centener">
             <div class="price-logo">Giỏ Hàng</div>
-            <div class="information-centener">
+            <div class="information-centener ">
                 <div class="name-product"> Sản phẩm</div>
-                <div class="manipulation">
+                <div class="manipulation ">
                     <div class="manipulation-name"> Đơn Giá</div>
                     <div class="manipulation-name"> Số Lượng</div>
                     <div class="manipulation-name"> Số Tiền</div>
                     <div class="manipulation-name"> Thao tác</div>
                 </div>
             </div>
-            <div class="details-product">
-                <div class="details-product__image">
-                    <img src="\<%= cart.image%>" alt="iphone" class="image__details">
-                    <div class="details-product__name"><%= cart.name%></div>
-                </div>
-                <div class="details-price">
-                    <div class="details-price__name" id="price"><%= cart.price%> </div>
-                    <div class="details-price__name">
-                        <div class="minus" id="minus" onclick="minus()">-</div>
-                        <div class="count" id="count">1</div>
-                        <div class="minus" id="plus" onclick="plus()">+</div>
+            <% cart.forEach(function(c, index){ %>
+                <div class="details-product box">
+                    <div class="details-product__image">
+
+                        <img src="\<%= c.image%>" alt="iphone" class="image__details">
+                        <div class="details-product__name">
+                            <%= c.name_product%>
+                        </div>
                     </div>
-                    <div class="details-price__name" id="sum">26,350,000</div>
-                    <div class="details-price__name">Xóa</div>
-                </div>
-            </div>
-            <div class="Billing">
-                <div class="received">
-                    <div class="name">
-                        * Họ tên người nhận <br>
-                        <input id="name__input" class="name__input" type="text" placeholder="Họ tên người nhận">
+                    <div class="details-price">
+                        <div class="details-price__name" id="price">
+                            <%= c.price%>
+                        </div>
+                        <div class="details-price__name">
+                            <div class="minus" id="minus" onclick="minus()">-</div>
+                            <div class="count" id="count">1</div>
+                            <div class="minus" id="plus" onclick="plus()">+</div>
+                        </div>
+                        <div class="details-price__name" id="total">
+                            <%= c.price%>
+                        </div>
+                        <div class="details-price__name">Xóa</div>
                     </div>
-                    <div class="name">
-                        * Điện thoại người nhận <br>
-                        <input class="name__input" type="text" id="phone__input" placeholder="Điện thoại người nhận">
-                    </div>
-                </div>
-                <div class="email">
-                    * email <br>
-                    <input type="text" id="email__input" class="email__input" placeholder="mail@example.com">
-                </div>
-                <div class="address">
-                    <div class="province">
-                        * Tỉnh / Thành phố <br>
-                        <input type="text" class="province__input" id="province__input"
-                            placeholder="--Chọn tỉnh/ Thành phố--">
-                    </div>
-                    <div class="province">
-                        * Quận / Huyện <br>
-                        <input type="text" class="province__input" id="district__input"
-                            placeholder="--Chọn Quận / Huyện--">
-                    </div>
-                    <div class="province">
-                        * Xã / Phường <br>
-                        <input type="text" class="province__input" id="commune__input"
-                            placeholder="--Chọn Xã / Phường--">
-                    </div>
-                </div>
-                <div class="address-take">
-                    <div class="address__take">
-                        * Địa chỉ <br>
-                        <input type="text" class="address__take__input" id="address__take__input"
-                            placeholder="Nhập địa chỉ chính xac của bạn">
-                    </div>
-                    <div class="address__take">
-                        Ghi chú giao hàng <br>
-                        <input type="text" class="address__take__input" id="time__input"
-                            placeholder="Giao hàng trong giờ hành chính">
-                    </div>
-                </div>
-                <div class="delivery">
-                    <p> Giao hàng tiêu chuẩn </p>
-                    <p> Miễn phí vận chuyển đối với nội thành Hà Nội, TP Hồ Chí Minh.</p>
-                    <p> Các địa chỉ khác: 100.000đ.</p>
-                    <h3 style="color: #e54940e0;">Thanh toán khi nhận hàng</h3>
-                </div>
-                <div class="comfirm">
-                    <a style="text-decoration: none;" href="/home">
-                        <div class="continue">Tiếp tục mua hàng </div>
-                    </a>
-                    <div class="comfirm-price"> Đặt hàng</div>
 
                 </div>
-            </div>
+                <% }); %>
+                    <div class="Billing">
+                        <div class="received">
+                            <div class="name">
+                                * Họ tên người nhận <br>
+                                <input id="name__input" class="name__input" type="text" placeholder="Họ tên người nhận">
+                            </div>
+                            <div class="name">
+                                * Điện thoại người nhận <br>
+                                <input class="name__input" type="text" id="phone__input" placeholder="Điện thoại người nhận">
+                            </div>
+                        </div>
+                        <div class="email">
+                            * email <br>
+                            <input type="text" id="email__input" class="email__input" placeholder="mail@example.com">
+                        </div>
+                        <div class="address">
+                            <div class="province">
+                                * Tỉnh / Thành phố <br>
+                                <input type="text" class="province__input" id="province__input" placeholder="--Chọn tỉnh/ Thành phố--">
+                            </div>
+                            <div class="province">
+                                * Quận / Huyện <br>
+                                <input type="text" class="province__input" id="district__input" placeholder="--Chọn Quận / Huyện--">
+                            </div>
+                            <div class="province">
+                                * Xã / Phường <br>
+                                <input type="text" class="province__input" id="commune__input" placeholder="--Chọn Xã / Phường--">
+                            </div>
+                        </div>
+                        <div class="address-take">
+                            <div class="address__take">
+                                * Địa chỉ <br>
+                                <input type="text" class="address__take__input" id="address__take__input" placeholder="Nhập địa chỉ chính xac của bạn">
+                            </div>
+                            <div class="address__take">
+                                Ghi chú giao hàng <br>
+                                <input type="text" class="address__take__input" id="time__input" placeholder="Giao hàng trong giờ hành chính">
+                            </div>
+                        </div>
+                        <div class="delivery">
+                            <p> Giao hàng tiêu chuẩn </p>
+                            <p> Miễn phí vận chuyển đối với nội thành Hà Nội, TP Hồ Chí Minh.</p>
+                            <p> Các địa chỉ khác: 100.000đ.</p>
+                            <h3 style="color: #e54940e0;">Thanh toán khi nhận hàng</h3>
+                        </div>
+                        <div class="comfirm">
+                            <a style="text-decoration: none;" href="/home">
+                                <div class="continue">Tiếp tục mua hàng </div>
+                            </a>
+                            <div class="comfirm-price"> Đặt hàng</div>
+
+                        </div>
+                    </div>
         </div>
         <div class="footer">
             <div class="information">
@@ -149,7 +152,8 @@
 
     </div>
 
+
 </body>
-<script src="/js/Giohang.js"></script>
+<script src="/js/cart.js"></script>
 
 </html>

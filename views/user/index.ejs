@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="/styles/DangNhap.css">
-<link rel="stylesheet" href="/styles/index.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-    crossorigin="anonymous" />
+<link rel="stylesheet" href="/styles/indexsing.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
 <head>
 </head>
@@ -17,11 +15,9 @@
                 <div class="mosty">
                     <i class="fas fa-user mosty__icon"></i>
                     <% if(typeof email !=="undefined" ) { %>
-                        <input id="username" name="name" class="input" type="text" placeholder="Type your username"
-                            value="<%= email %>" onkeyup="checkValiDateUserName()">
+                        <input id="username" name="name" class="input" type="text" placeholder="Type your username" value="<%= email %>" onkeyup="checkValiDateUserName()">
                         <% } else { %>
-                            <input id="username" name="name" class="input" type="text" placeholder="Type your username"
-                                onkeyup="checkValiDateUserName()">
+                            <input id="username" name="name" class="input" type="text" placeholder="Type your username" onkeyup="checkValiDateUserName()">
                             <% } %>
                 </div>
                 <div class="error" id="error_UserName">
@@ -34,8 +30,7 @@
             <div class="label">Password <br>
                 <div class="mosty">
                     <i class="fas fa-lock mosty__icon"></i>
-                    <input type="password" name="password" id="password" class="input" placeholder="Type your password"
-                        onkeyup="checkValiDatePassword()">
+                    <input type="password" name="password" id="password" class="input" placeholder="Type your password" onkeyup="checkValiDatePassword()">
                 </div>
                 <div class="error" id="error_password">
                     <% if(typeof errorpass !=="undefined" ) { %>
@@ -75,7 +70,6 @@
     </div>
 </body>
 <script src="/js/DangNhap.js">
-
 </script>
 
 </html>

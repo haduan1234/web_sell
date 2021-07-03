@@ -267,3 +267,8 @@
     align-items: center;
     color: white;
 }
+
+.detail_product{
+    border-top: 1px solid #d2691edb ;
+    padding: 20px;
+}

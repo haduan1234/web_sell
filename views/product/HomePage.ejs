@@ -3,9 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="/styles/HomePage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,20 +53,16 @@
             <p class="name-line">Mặt hàng</p>
         </div>
         <div class="category">
-
-            <a href="/home/computer" style="text-decoration:none ">
-                <div class="items">
-                    <img src="/images/computer.jpg" alt="computer" class="image_items">
-                    <p class="id">Máy tính</p>
-                </div>
-            </a>
-
-            <a href="/home/phone" style="text-decoration:none">
-                <div class="items">
-                    <img src="/images/phone.jpg" alt="phone" class="image_items">
-                    <p class="id">Điện Thoại</p>
-                </div>
-            </a>
+            <% product_group.forEach(function(p, index){ %>
+                <a href="/home/group?id=<%= p.group_id%>" style="text-decoration:none ">
+                    <div class="items">
+                        <img src="\<%= p.group_avarta%>" alt="computer" class="image_items">
+                        <p class="id">
+                            <%= p.group_name%>
+                        </p>
+                    </div>
+                </a>
+                <% }); %>
         </div>
         <div class="line">
             <p class="name-line">Sản Phẩm</p>

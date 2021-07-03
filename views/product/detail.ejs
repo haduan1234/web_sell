@@ -2,10 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/styles/ChiTietSanPham.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="/styles/detailProduct.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,30 +30,50 @@
         </div>
         <div class="contener">
             <div class="detail-image">
-                    <img src="/<%= detailProduct.image%>" alt="iphone" class="image__product">
+                <img src="\<%= product.image%>" alt="iphone" class="image__product">
             </div>
             <div class="detail-product">
-                <div class="name-product">
-                    <h2><%= detailProduct.name%> </h2>
+                <div class="name-product" style="font-size: 28px;">
+                    <%= product.name%>
                 </div>
-                <div class="price"> <%= detailProduct.price%> <sub>đ</sub></div>
+                <div class="price">
+                    <p class="price_nuber">
+                        <%= product.price%>
+                    </p> <sub>đ</sub>
+                </div>
                 <div class="amount-product">
                     <div>Số lượng</div>
                     <div class="tile">
-                        <div class="minus" id="minus" onclick="minus()" >-</div>
+                        <div class="minus" id="minus" onclick="minus()">-</div>
                         <div class="count" id="count">1</div>
                         <div class="minus" id="plus" onclick="plus()">+</div>
                     </div>
-                    <div> <%= detailProduct.amount%> San pham co san</div>
+                    <div>
+                        <%= product.amount%> San pham co san
+                    </div>
                 </div>
                 <div class="buy">
                     <div class="buy-more">
-                        <i class="fas fa-cart-plus"></i>
-                        thêm giỏ hàng
+                        <i class="fas fa-cart-plus"></i> thêm giỏ hàng
                     </div>
-                  <a href="/cart?id=<%= detailProduct.id%>" style="text-decoration: none;"><div class="buy-buy">Mua ngay</div></a>
+                    <a href="/cart?id=<%= product.id%>" style="text-decoration: none;">
+                        <div class="buy-buy">Mua ngay</div>
+                    </a>
                 </div>
             </div>
+        </div>
+
+        <div class="detail_product">
+            <% detailProduct.forEach(function(p, index){ %>
+                <div>
+                    *
+                    <%= p.name_detail%>:
+                        <%= p.value_detail%>
+                </div>
+                <% }); %>
+                    <div class="id_product">
+                        <%= product.id%>
+                    </div>
         </div>
         <div class="footer">
             <div class="information">
@@ -89,8 +107,27 @@
         </div>
 
     </div>
-
 </body>
 <script src="../js/ChiTietSanPham.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $(".buy-more").click(function() {
+            // console.log("anh:", $('.image__product').attr('src'))
+            // $.get("product/test", function(data, status) {
+            //     alert("Data: " + data.data + "\nStatus: " + status);
+            // });
+            console.log("id la", $('.id_product').text())
+            $.post("cart/add", {
+                    id_product: $('.id_product').text().trim(),
+                    count: $('.count').text().trim(),
+                },
+                function(data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+        });
+
+    });
+</script>
 
 </html>

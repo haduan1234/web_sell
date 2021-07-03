@@ -1,8 +1,10 @@
 .navi{
     background-color:rgba(0,0,21,.2);
     color: white;
+    text-align: center;
+
 }
 
 .naviPage{
-    text-align: left;
+    /* text-align: left; */
 }

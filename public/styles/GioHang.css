@@ -99,6 +99,7 @@
     align-items: center;
 }
 
+
 /* foter */
 
 .footer {
@@ -168,6 +169,7 @@
 .social-icon__corlor {
     color: white;
 }
+
 
 /* contener */
 
@@ -260,7 +262,7 @@
 .Billing {
     margin-top: 20px;
     background-color: white;
-    border-top:1px solid #e54940e0;
+    border-top: 1px solid #e54940e0;
 }
 
 .received {
@@ -335,7 +337,8 @@
     display: flex;
     justify-content: center;
 }
-.continue{
+
+.continue {
     flex-direction: column;
     display: flex;
     width: 150px;
@@ -347,15 +350,20 @@
     color: #e54940e0;
     background-color: #d89cc450;
 }
-.comfirm-price{
+
+.comfirm-price {
     flex-direction: column;
     display: flex;
     width: 150px;
     height: 50px;
-    background-color:  #e54940e0;
+    background-color: #e54940e0;
     justify-content: center;
     align-items: center;
     margin: 10px 10px;
     color: white;
     font-size: 20px;
+}
+
+.box {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

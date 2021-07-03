@@ -1,0 +1,15 @@
+.d-fex {
+    display: flex;
+}
+
+.justify-content {
+    justify-content: center;
+}
+
+.align-items {
+    align-items: center;
+}
+
+.container-fluid {
+    padding: 0 !important;
+}

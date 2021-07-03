@@ -6,8 +6,16 @@ const index = (req, res) => {
         if (error) {
             throw error;
         } else {
-            res.render('product/homePage', {
-                product: results
+            let product = results
+            let sql = "Select * from product_group "
+            db.query(sql, (error, results) => {
+                if (error) throw error;
+                else {
+                    res.render('product/homePage', {
+                        product,
+                        product_group: results
+                    })
+                }
             })
         }
 
@@ -27,20 +35,10 @@ const search = (req, res) => {
         }
     })
 }
-const phone = (req, res) => {
-    let sql = "Select * from product where type = 'phone'"
-    db.query(sql, (error, results) => {
-        if (error) throw error;
-        else {
-            res.render('product/productType', {
-                product: results
-            })
-        }
-    })
 
-}
-const computer = (req, res) => {
-    let sql = "Select * from product where type = 'computer'"
+const group = (req, res) => {
+    let id = req.query.id
+    let sql = "Select * from product where group_id = " + id
     db.query(sql, (error, results) => {
         if (error) throw error;
         else {
@@ -55,8 +53,7 @@ const computer = (req, res) => {
 const Controller = {
     index,
     search,
-    phone,
-    computer
+    group
 }
 
 export default Controller;

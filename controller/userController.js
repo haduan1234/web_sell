@@ -1,10 +1,10 @@
 import db from '../db.js'
 
-const index = async (req, res) => {
+const index = async(req, res) => {
     res.render('user/index')
 }
 
-const getSignUp = async (req, res) => {
+const getSignUp = async(req, res) => {
     res.render('user/signUp')
 }
 
@@ -13,7 +13,7 @@ const createUser = (req, res) => {
     let user = req.body;
     let email = req.body.email
     let sql = "Select * from user where email = ?"
-    var query = db.query(sql, email, (error, results) => {
+    db.query(sql, email, (error, results) => {
         if (error) throw error;
         else {
             if (results.length > 0) {
@@ -27,8 +27,7 @@ const createUser = (req, res) => {
             db.query(sqlInsert, user, (error, results, fields) => {
                 if (error) {
                     res.send("Thông tin không chính xác")
-                }
-                else {
+                } else {
                     res.render('user/index')
                 }
             })
@@ -41,7 +40,7 @@ const singIn = (req, res) => {
     let email = req.body.name
     let password = req.body.password
     let sql = "Select * from user where email = ?"
-     db.query(sql, email, (error, results) => {
+    db.query(sql, email, (error, results) => {
         if (error) throw error;
         else {
             if (results.length > 0) {
@@ -49,23 +48,24 @@ const singIn = (req, res) => {
                 db.query(sqlpass, password, (error, results) => {
                     if (error) throw error;
                     else {
-                        if(results.length>0){
+                        if (results.length > 0) {
+                            res.cookie('userId', results[0].id)
                             res.redirect('/Home')
-                        }else{
-                            res.render('user/index',{
+                        } else {
+                            res.render('user/index', {
                                 errorpass: "password không đúng",
                                 email
                             })
                         }
                     }
                 })
-        }else{
-            res.render('user/index',{
-                erroruser: "Tài khoản không đúng",
-                email
+            } else {
+                res.render('user/index', {
+                    erroruser: "Tài khoản không đúng",
+                    email
 
-            })
-        }
+                })
+            }
 
         }
     })

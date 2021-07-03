@@ -1,3 +1,4 @@
+import { query } from 'express'
 import db from '../db.js'
 
 const index = (req, res) => {
@@ -39,7 +40,6 @@ const postCreate = (req, res, next) => {
                         image: req.body.image,
                         amount: req.body.amount
                     }
-                    let id = req.body.id
                     let sqlUpdate = "UPDATE product SET ? WHERE id=" + id
                     db.query(sqlUpdate, updateProduct, (error, results) => {
                         if (error) throw error;
@@ -83,23 +83,23 @@ const postCreate = (req, res, next) => {
     }
 }
 
-const show = async (req, res) => {
-    var page = parseInt(req.query.page) || 1 ;      
+const show = async(req, res) => {
+    var page = parseInt(req.query.page) || 1;
     var perPage = 6;
-    var start = (page - 1) *perPage
+    var start = (page - 1) * perPage
     var end = page * perPage
 
-   
-   
+
+
 
     let sql = "SELECT * FROM product"
     db.query(sql, (error, results) => {
         if (error) throw error;
         else {
-           var pageLength = Math.floor(results.length/perPage) + 1
+            var pageLength = Math.floor(results.length / perPage) + 1
             res.render('product/show', {
-                product: results.slice(start,end),
-               page
+                product: results.slice(start, end),
+                page
             })
         }
     })
@@ -112,8 +112,7 @@ const deleteProduct = (req, res) => {
     db.query(sql, (error, results) => {
         if (error) {
             throw error;
-        }
-        else {
+        } else {
             if (results.length > 0) {
                 let sqlDelete = "delete from product where id = " + id
                 db.query(sqlDelete, (error) => {
@@ -132,8 +131,7 @@ const deleteProduct = (req, res) => {
                         })
                     }
                 })
-            }
-            else {
+            } else {
                 let sql = "SELECT * FROM product"
                 db.query(sql, (error, results) => {
                     if (error) throw error;
@@ -144,23 +142,166 @@ const deleteProduct = (req, res) => {
                         })
                     }
                 })
-               }
+            }
         }
     })
 }
 
 const search = (req, res) => {
- let name = req.query.search
- let sql = "Select * from product where name like "+`'%${name}%'`
-    var query =  db.query(sql, (error, results) => {
+    let name = req.query.search
+    let sql = "Select * from product where name like " + `'%${name}%'`
+    db.query(sql, (error, results) => {
         if (error) throw error;
         else {
             res.render('product/show', {
                 product: results
             })
 
-        } 
+        }
     })
+
+}
+
+const color = (req, res) => {
+
+    if (typeof req.query.id !== 'undefined') {
+        res.render('product/createColor', {
+            id: req.query.id
+        })
+    }
+}
+
+const addcolor = (req, res, ) => {
+    if (typeof req.body.id_product !== 'undefined') {
+        let id = req.body.id_product
+        req.body.image_color = req.file.path.split('\\').slice(1).join('\\')
+        let insert = req.body
+        let sqlid = "Select * from product_color where id_product =" + id
+        db.query(sqlid, (error, results) => {
+            if (error) throw error;
+            else {
+                if (results.length > 0) {
+                    let sqlid = "Select * from product_color where name_color = ?"
+                    db.query(sqlid, req.body.name_color, (error, results) => {
+                        if (error) throw error;
+                        else {
+                            if (results.length > 0) {
+                                res.render('product/createColor', {
+                                    id,
+                                    error: "color đã tồn tại"
+                                })
+                            } else {
+                                let sqlInsert = "INSERT INTO product_color SET ?"
+                                db.query(sqlInsert, insert, (error, results) => {
+                                    if (error) throw error
+                                    else {
+                                        res.render('product/createColor', {
+                                            id
+                                        })
+                                    }
+                                })
+                            }
+                        }
+
+                    })
+
+                } else {
+                    let sqlInsert = "INSERT INTO product_color SET ?"
+                    db.query(sqlInsert, insert, (error, results) => {
+                        if (error) throw error
+                        else {
+                            res.render('product/createColor', {
+                                id
+                            })
+                        }
+                    })
+                }
+            }
+        })
+    }
+}
+
+const colorShow = (req, res) => {
+    let sql = "SELECT * FROM product_color"
+    db.query(sql, (error, results) => {
+        if (error) throw error;
+        else {
+            if (results.length > 0) {
+                res.render('product/colorShow', {
+                    product: results
+
+                })
+            }
+        }
+    })
+}
+const searchColor = (req, res) => {
+    let name = req.query.search
+    let sql = "Select * from product_color where name_color like " + `'%${name}%'`
+    db.query(sql, (error, results) => {
+        if (error) throw error;
+        else {
+            res.render('product/colorShow', {
+                product: results
+            })
+
+        }
+    })
+
+}
+const productGroup = (req, res) => {
+    let sql = "SELECT * FROM product_group"
+    db.query(sql, (error, results) => {
+        if (error) throw error;
+        else {
+            res.render('product/createGroup', {
+                product: results
+            })
+        }
+    })
+}
+
+const postGroup = (req, res) => {
+    req.body.group_avarta = req.file.path.split('\\').slice(1).join('\\')
+    let product_group = req.body
+    if (typeof product_group.group_name !== 'undefined') {
+        let sqlname = "select  * from product_group where group_name =?"
+        db.query(sqlname, product_group.group_name, (error, results) => {
+            if (error) throw error;
+            else {
+                if (results.length > 0) {
+                    let sql = "SELECT * FROM product_group"
+                    db.query(sql, (error, results) => {
+                        if (error) throw error;
+                        else {
+                            res.render('product/createGroup', {
+                                product: results,
+                                error: "Nhóm đã tồn tại"
+                            })
+                        }
+                    })
+                } else {
+                    let sqlInsert = "INSERT INTO product_group SET ?"
+                    db.query(sqlInsert, product_group, (error, results) => {
+                        if (error) throw error
+                        else {
+                            let sql = "SELECT * FROM product_group"
+                            db.query(sql, (error, results) => {
+                                if (error) throw error;
+                                else {
+                                    if (results.length > 0) {
+                                        res.render('product/createGroup', {
+                                            product: results
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    })
+                }
+            }
+        })
+    }
 
 }
 
@@ -169,7 +310,13 @@ const controllerProduct = {
     postCreate,
     show,
     deleteProduct,
-    search
+    search,
+    color,
+    addcolor,
+    colorShow,
+    searchColor,
+    productGroup,
+    postGroup
 }
- 
+
 export default controllerProduct
