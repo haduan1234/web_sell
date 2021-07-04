@@ -1,0 +1,68 @@
+.body_login {
+    background-image: url(/images/Anh_co.jpg);
+    background-size: 100%;
+}
+
+.navi {
+    width: 100%;
+    height: 85px;
+    background-color: red;
+}
+
+.login_navi {
+    color: white;
+    font-size: 30px;
+    border: 2px solid white;
+    width: 150px;
+    height: 60px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin: 10px 20px;
+}
+
+.div_login {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    ;
+}
+
+.div_login_buttun {
+    padding-top: 30px;
+}
+
+.center_login {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 450px;
+    background-color: white;
+    flex-direction: column;
+    border-radius: 5px;
+    position: relative;
+    margin: 20px auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.name_form {
+    color: red;
+}
+
+.submit_button {
+    width: 225px;
+    height: 30px;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

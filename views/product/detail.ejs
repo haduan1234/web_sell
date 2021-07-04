@@ -117,7 +117,7 @@
             // $.get("product/test", function(data, status) {
             //     alert("Data: " + data.data + "\nStatus: " + status);
             // });
-            console.log("id la", $('.id_product').text())
+            console.log("id la:", $('.id_product').text().trim())
             $.post("cart/add", {
                     id_product: $('.id_product').text().trim(),
                     count: $('.count').text().trim(),

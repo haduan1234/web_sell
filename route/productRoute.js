@@ -5,7 +5,7 @@ import multer from 'multer'
 
 var upload = multer({ dest: './public/uploads' })
 var route = express.Router();
-
+route.get('/', controllerProduct.msProduct)
 route.get('/create', controllerProduct.index)
 route.post('/create', upload.single('image'), controllerProduct.postCreate)
 route.get('/show', controllerProduct.show)

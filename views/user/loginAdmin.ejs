@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/loginAdmin.css">
+    <link rel="stylesheet" href="/styles/DangNhap.css">
+    <link rel="stylesheet" href="/styles/indexsing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+    <title>Document</title>
+</head>
+
+<body class="body_login">
+    <div class="navi">
+        <div class="login_navi">
+            LOGIN
+        </div>
+    </div>
+    <div class="div_login">
+        <div class="center_login">
+            <h2 class="name_form">Login</h2>
+            <form action="/user/loginAdmin" method="post" onsubmit="return login()">
+                <div class="label">Username Admin <br>
+                    <div class="mosty">
+                        <i class="fas fa-user mosty__icon"></i>
+                        <% if(typeof user_name !=="undefined" ) { %>
+                            <input id="username" name="name" class="input" type="text" placeholder="Type your username" value="<%= user_name %>" onkeyup="checkValiDateUserName()">
+                            <% } else { %>
+                                <input id="username" name="name" class="input" type="text" placeholder="Type your username" onkeyup="checkValiDateUserName()">
+                                <% } %>
+                    </div>
+                    <div class="error" id="error_UserName">
+                        <% if(typeof error_user !=="undefined" ) { %>
+                            <%= error_user %>
+                                <% } %>
+                    </div>
+                </div>
+
+                <div class="label">Password <br>
+                    <div class="mosty">
+                        <i class="fas fa-lock mosty__icon"></i>
+                        <input type="password" name="password" id="password" class="input" placeholder="Type your password" onkeyup="checkValiDatePassword()">
+                    </div>
+                    <div class="error" id="error_password">
+                        <% if(typeof error_pass !=="undefined" ) { %>
+                            <%= error_pass %>
+                                <% } %>
+                    </div>
+                    <div class="d-fex justify-content">
+                        <div class="div_login_buttun">
+                            <button class="submit_button" type="submit" onclick="login()">
+                            LOGIN
+                        </button>
+                        </div>
+                    </div>
+            </form>
+            </div>
+
+</body>
+<script src="/js/DangNhap.js">
+</script>
+
+</html>

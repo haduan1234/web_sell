@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="/styles/adminShow.css">
     <link rel="stylesheet" href="/styles/navi.css">
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="/styles/createProduct.css">
@@ -14,104 +15,119 @@
 </head>
 
 <body>
-    <div class="d-flex ">
-        <div class="d-flex align-items-start navi">
-            <div class="nav flex-column nav-pills d-flex justify-content" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <button class="nav-link active  " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Product management</button>
-                <a href="/product/show" style="text-decoration: none;">
-                    <button class="nav-link button " id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Product show</button>
-                </a>
-                <a href="/detail/show" style="text-decoration: none;">
-                    <button class="nav-link button " id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Detail show</button>
-                </a>
-                <a href="/product/colorShow" style="text-decoration: none;">
-                    <button class="nav-link button" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Color show</button>
-                </a>
-            </div>
-            <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    ...</div>
-                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    ...</div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    ...</div>
+    <div class="container_body">
+        <div class="pt-1">
+            <div class="navi_admin pe-5">
+                <div class="management p-2 d-flex align-items-center">
+                    Product management
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="p-2">
+                        <i class="fas fa-flag icon_notece"></i>
+                    </div>
+                    <div class="name_Admin p-2">name</div>
+                    <div class="avata_Admin ">
+                        <img src="/images/anh.jpg" alt="anh" width="65px" height="65px" style=" border: 1px solid rgba(100, 100, 111, 0.2); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 100%;">
+                    </div>
+                </div>
             </div>
         </div>
-        <form action="/product/create" method="post" enctype="multipart/form-data">
-            <div class="p-3">
-                <div class="row pb-2">
-                    <div class="col-md-6 col-sm-12">
-                        <div for="exampleFormControlFile1 d-block">Tên sản phẩm</div>
-                        <% if(typeof editProduct !=="undefined" ) { %>
-                            <input class="form-control form-control-lg" name="name" type="text" placeholder=".Name_product" value="<%= editProduct.name %>" aria-label=".form-control-lg example">
-                            <% } else { %>
-                                <input class="form-control form-control-lg" name="name" type="text" placeholder=".Name_product" aria-label=".form-control-lg example">
-                                <% } %>
+        <div class="d-flex ">
+            <div class="navi_management">
+
+                <div class="list_management">
+                    <div class="p-1 list_a">
+                        <a href="/product/show" style="text-decoration: none; color: white; font-size: 19px;">
+                        Product
+                    </a>
 
                     </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div for="exampleFormControlFile1 d-block">Giá sản phẩm</div>
-                        <% if(typeof editProduct !=="undefined" ) { %>
-                            <input class="form-control form-control-lg" name="price" type="text" value="<%= editProduct.price %>" placeholder=".Price_product" aria-label="default input example">
-                            <% } else { %>
-                                <input class="form-control form-control-lg" name="price" type="text" placeholder=".Price_product" aria-label="default input example">
-                                <% } %>
+                    <div class=" p-1 list_a">
+                        <a href="/detail/show" style="text-decoration: none; color: white; font-size: 19px;">
+                        Show detail
+                    </a>
+                    </div>
+                    <div class=" p-1 list_a">
+                        <a href="/product/colorShow" style="text-decoration: none; color: white; font-size: 19px;">
+                        Show color
+                    </a>
                     </div>
                 </div>
-
-                <div class="row pb-2">
-                    <div class="col-md-6 col-sm-12">
-                        <div for="exampleFormControlFile1 d-block">Tên nhà sản xuất</div>
-                        <% if(typeof editProduct !=="undefined" ) { %>
-                            <input class="form-control form-control-lg" name="brand" type="text" value="<%= editProduct.brand %>" placeholder=".Brand_product" aria-label=".form-control-lg example">
-                            <% } else { %>
-                                <input class="form-control form-control-lg" name="brand" type="text" placeholder=".Brand_product" aria-label=".form-control-lg example">
-                                <% } %>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div for="exampleFormControlFile1 d-block">Số lượng sản phẩm</div>
-                        <% if(typeof editProduct !=="undefined" ) { %>
-                            <input class="form-control form-control-lg" name="amount" type="text" value="<%= editProduct.amount %>" placeholder=".Amount_product" aria-label="default input example">
-                            <% } else { %>
-                                <input class="form-control form-control-lg" name="amount" type="text" placeholder=".Amount_product" aria-label="default input example">
-                                <% } %>
-                    </div>
-                    <div class="row pb-2">
-                        <div class="col-md-6 col-sm-12">
-                            <div for="exampleFormControlFile1 d-block">Group_id</div>
-                            <% if(typeof editProduct !=="undefined" ) { %>
-                                <input class="form-control form-control-lg" name="group_id" type="text" value="<%= editProduct.group_id %>" placeholder=".group_id" aria-label=".form-control-lg example">
-                                <% } else { %>
-                                    <input class="form-control form-control-lg" name="group_id" type="text" placeholder=".group_id" aria-label=".form-control-lg example">
-                                    <% } %>
-
-                        </div>
-                        <div class="col-md-6 col-sm-12 mt-3">
-                            <div class="form-group">
-                                <div for="exampleFormControlFile1 d-block">Chọn ảnh</div>
+            </div>
+            <div>
+                <form action="/product/create" method="post" enctype="multipart/form-data">
+                    <div class="p-3">
+                        <div class="row pb-2">
+                            <div class="col-md-6 col-sm-12">
+                                <div for="exampleFormControlFile1 d-block">Tên sản phẩm</div>
                                 <% if(typeof editProduct !=="undefined" ) { %>
-                                    <input type="file" name="image" id="exampleFormControlFile1">
-                                    <img src="\<%= editProduct.image%>" width="80" height="80px" aria-multiselectable="false">
+                                    <input class="form-control form-control-lg" name="name" type="text" placeholder=".Name_product" value="<%= editProduct.name %>" aria-label=".form-control-lg example">
                                     <% } else { %>
-                                        <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+                                        <input class="form-control form-control-lg" name="name" type="text" placeholder=".Name_product" aria-label=".form-control-lg example">
                                         <% } %>
-                                            <div class="col-md-6 col-sm-12">
-                                                <div for="exampleFormControlFile1 d-block"></div>
-                                                <% if(typeof editProduct !=="undefined" ) { %>
-                                                    <input name="id" type="text" value="<%= editProduct.id %>" placeholder=".Price_product" aria-label="default input example">
-                                                    <% } %>
-                                            </div>
-                                            <div>
-                                                <button type="submit" class="stylebutton mt-3">CREATE</button>
-                                            </div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div for="exampleFormControlFile1 d-block">Giá sản phẩm</div>
+                                <% if(typeof editProduct !=="undefined" ) { %>
+                                    <input class="form-control form-control-lg" name="price" type="text" value="<%= editProduct.price %>" placeholder=".Price_product" aria-label="default input example">
+                                    <% } else { %>
+                                        <input class="form-control form-control-lg" name="price" type="text" placeholder=".Price_product" aria-label="default input example">
+                                        <% } %>
                             </div>
                         </div>
-                    </div>
-                    </from>
 
+                        <div class="row pb-2">
+                            <div class="col-md-6 col-sm-12">
+                                <div for="exampleFormControlFile1 d-block">Tên nhà sản xuất</div>
+                                <% if(typeof editProduct !=="undefined" ) { %>
+                                    <input class="form-control form-control-lg" name="brand" type="text" value="<%= editProduct.brand %>" placeholder=".Brand_product" aria-label=".form-control-lg example">
+                                    <% } else { %>
+                                        <input class="form-control form-control-lg" name="brand" type="text" placeholder=".Brand_product" aria-label=".form-control-lg example">
+                                        <% } %>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div for="exampleFormControlFile1 d-block">Số lượng sản phẩm</div>
+                                <% if(typeof editProduct !=="undefined" ) { %>
+                                    <input class="form-control form-control-lg" name="amount" type="text" value="<%= editProduct.amount %>" placeholder=".Amount_product" aria-label="default input example">
+                                    <% } else { %>
+                                        <input class="form-control form-control-lg" name="amount" type="text" placeholder=".Amount_product" aria-label="default input example">
+                                        <% } %>
+                            </div>
+                            <div class="row pb-2">
+                                <div class="col-md-6 col-sm-12">
+                                    <div for="exampleFormControlFile1 d-block">Group_id</div>
+                                    <% if(typeof editProduct !=="undefined" ) { %>
+                                        <input class="form-control form-control-lg" name="group_id" type="text" value="<%= editProduct.group_id %>" placeholder=".group_id" aria-label=".form-control-lg example">
+                                        <% } else { %>
+                                            <input class="form-control form-control-lg" name="group_id" type="text" placeholder=".group_id" aria-label=".form-control-lg example">
+                                            <% } %>
 
-                </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mt-3">
+                                    <div class="form-group">
+                                        <div for="exampleFormControlFile1 d-block">Chọn ảnh</div>
+                                        <% if(typeof editProduct !=="undefined" ) { %>
+                                            <input type="file" name="image" id="exampleFormControlFile1">
+                                            <img src="\<%= editProduct.image%>" width="80" height="80px" aria-multiselectable="false">
+                                            <% } else { %>
+                                                <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+                                                <% } %>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div for="exampleFormControlFile1 d-block"></div>
+                                                        <% if(typeof editProduct !=="undefined" ) { %>
+                                                            <input name="id" type="text" value="<%= editProduct.id %>" placeholder=".Price_product" aria-label="default input example">
+                                                            <% } %>
+                                                    </div>
+                                                    <div>
+                                                        <button type="submit" class="stylebutton mt-3">CREATE</button>
+                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </from>
+                        </div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script src="/js/HomePage.js"></script>

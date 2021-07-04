@@ -6,7 +6,7 @@ import productRoute from './route/productRoute.js'
 import detailRoute from "./route/detialProductRoute.js"
 import cartRoute from './route/cartRoute.js'
 
-import requireAuth from './middlewares/auth.middlewares.js'
+// import requireAuth from './middlewares/auth.middlewares.js'
 
 
 import db from './db.js'
@@ -16,7 +16,7 @@ db.connect();
 
 
 const app = express()
-const port = 3008
+const port = 3000
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -137,7 +137,7 @@ app.use('/user', userRoute)
 app.use('/home', HomeRoute)
 app.use('/product', productRoute)
 app.use('/detail', detailRoute)
-app.use('/cart', requireAuth.require, cartRoute)
+app.use('/cart', cartRoute)
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

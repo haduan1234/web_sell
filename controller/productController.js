@@ -305,6 +305,11 @@ const postGroup = (req, res) => {
 
 }
 
+const msProduct = (req, res) => {
+    res.render('product/producrManagement')
+
+}
+
 const controllerProduct = {
     index,
     postCreate,
@@ -316,7 +321,8 @@ const controllerProduct = {
     colorShow,
     searchColor,
     productGroup,
-    postGroup
+    postGroup,
+    msProduct
 }
 
 export default controllerProduct

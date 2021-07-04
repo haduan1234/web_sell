@@ -70,11 +70,58 @@ const singIn = (req, res) => {
         }
     })
 }
+
+const Admin = (req, res) => {
+    res.render('user/homeAdmin')
+}
+
+const loginAdmin = (req, res) => {
+    res.render('user/loginAdmin')
+}
+const postloginAdmin = (req, res) => {
+    if (typeof req.body.name !== 'undefined') {
+        let name = req.body.name
+        let sql = "select * from admin_user where Admin_user_name =?"
+        db.query(sql, name, (error, results) => {
+            if (error) throw error;
+            else {
+                if (results.length > 0) {
+                    let password = req.body.password
+                    let sqlpass = "select * from admin_user where pass_word =?"
+                    db.query(sqlpass, password, (error, results) => {
+                        if (error) throw error;
+                        else {
+                            if (results.length > 0) {
+                                res.render('product/show', {
+                                    admin_user: results
+                                })
+                            } else {
+                                res.render('user/loginAdmin', {
+                                    error_pass: "password khong dung",
+                                    user_name: name
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    res.render('user/loginAdmin', {
+                        error_user: "user_name khong dung",
+                        user_name: name
+                    })
+                }
+            }
+        })
+    }
+}
 const controllerUser = {
     index,
     getSignUp,
     createUser,
-    singIn
+    singIn,
+    loginAdmin,
+    Admin,
+    postloginAdmin
+
 }
 
 export default controllerUser

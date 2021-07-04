@@ -42,8 +42,8 @@ const index = (req, res) => {
 
 
 const postIndex = (req, res) => {
-    console.log()
     let id = req.body.id_product
+    console.log("id la: ", id)
     let count = req.body.count
     let sql = " select * from cart where id_product = " + id
     db.query(sql, (error, results) => {

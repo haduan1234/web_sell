@@ -1,21 +1,20 @@
-body{
+.body {
     background-size: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 60px;
-  
 }
-h2{
-    
-    text-align: center;
 
+h2 {
+    text-align: center;
 }
-.label{
+
+.label {
     margin: 10px;
-    
 }
-.center{
+
+.center {
     display: flex;
     align-items: center;
     width: 300px;
@@ -24,34 +23,36 @@ h2{
     flex-direction: column;
     border-radius: 5px;
     position: relative;
-    
 }
-.mosty{
-margin-top: 10px;
-border-bottom: 1px solid #757575;
+
+.mosty {
+    margin-top: 10px;
+    border-bottom: 1px solid #757575;
 }
-.input{
+
+.input {
     border: none;
     outline: none;
     bottom: 10px;
     width: 225px;
     margin-bottom: 8px;
-
 }
-.forgot{
+
+.forgot {
     flex-direction: column;
     margin-top: 0px;
     height: 30px;
 }
-p{
+
+p {
     flex-direction: column;
     text-align: right;
     width: 100%;
     margin-top: 5px;
-   font-size: 13px;
+    font-size: 13px;
 }
 
-.submit{
+.submit {
     width: 225px;
     height: 30px;
     background-color: turquoise;
@@ -61,22 +62,26 @@ p{
     justify-content: center;
     border-radius: 2rem;
     border: none;
-    color: white    ;
+    color: white;
     cursor: pointer;
 }
-.Sign{
+
+.Sign {
     position: absolute;
     bottom: 20px;
     size: 5px;
 }
-.sing-up{
+
+.sing-up {
     font-size: 13px;
 }
-.icon{
+
+.icon {
     display: flex;
     margin-top: 20px;
 }
-.icon-fb{
+
+.icon-fb {
     width: 30px;
     height: 30px;
     background-color: blue;
@@ -86,13 +91,14 @@ p{
     justify-content: center;
     align-items: center;
 }
-.color{
+
+.color {
     flex-direction: column;
     color: white;
     text-align: center;
-   
 }
-.icon-tw{
+
+.icon-tw {
     width: 30px;
     height: 30px;
     background-color: #1298f6;
@@ -101,9 +107,9 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.icon-gg{
+
+.icon-gg {
     width: 30px;
     height: 30px;
     background-color: #ea4335;
@@ -113,9 +119,11 @@ p{
     justify-content: center;
     align-items: center;
 }
-.mosty__icon{
+
+.mosty__icon {
     color: #757575;
 }
-.error{
-    color:  red;
+
+.error {
+    color: red;
 }
