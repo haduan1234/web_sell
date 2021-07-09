@@ -51,11 +51,22 @@
 
 .list_product {
     height: 45px;
-    background-color: #198754;
-    border-radius: 5px;
+    background-color: #fdfdfd;
     text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
 }
 
 .container_body {
     overflow-x: hidden;
+}
+
+.delete_modal {
+    width: 60px;
+    height: 39px;
+    background-color: red;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(108, 117, 125);
 }

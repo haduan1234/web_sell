@@ -1,49 +1,47 @@
 import db from '../db.js'
 
 const index = (req, res) => {
-    if (typeof req.query.id !== "undefined") {
-        let id = req.query.id
-        let sql = "Select * from product where id =" + id
-        db.query(sql, (error, results) => {
-            if (error) throw error;
-            else {
-                let product_new = {
-                    id_product: results[0].id,
-                    image: results[0].image,
-                    price: results[0].price,
-                    name_product: results[0].name
+    let id = req.query.id
+    let sql = "Select * from product where id=" + id
+    db.query(sql, (error, results) => {
+        if (error) throw error;
+        else {
+            // let id_product = results[0].id
+            // let image= results[0].image
+            // let price= results[0].price
+            // let name_product= results[0].name
 
-                }
-                let sqlInsert = "INSERT INTO cart SET ?"
-                db.query(sqlInsert, product_new, (error, results) => {
-                    if (error) throw error
-                    else {
+            let product_new = {
+                image: results[0].image,
+                price: results[0].price,
+                name_product: results[0].name
 
-                        let sql = "SELECT * FROM cart "
-                        db.query(sql, (error, results) => {
-                            if (error) throw error;
-                            else {
-                                console.log("cart:", results)
-                                return res.render('product/cart', {
-                                    cart: results
-                                })
-
-                            }
-                        })
-                    }
-                })
             }
+            let sqlInsert = "update  cart SET ? where id_product =" + id
+            db.query(sqlInsert, product_new, (error, results) => {
+                if (error) throw error
+                else {
 
+                    let sql = "SELECT * FROM cart "
+                    db.query(sql, (error, results) => {
+                        if (error) throw error;
+                        else {
+                            console.log("cart:", results)
+                            return res.render('product/cart', {
+                                cart: results
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
 
-        })
-
-    }
 }
 
 
 const postIndex = (req, res) => {
     let id = req.body.id_product
-    console.log("id la: ", id)
     let count = req.body.count
     let sql = " select * from cart where id_product = " + id
     db.query(sql, (error, results) => {
@@ -76,8 +74,8 @@ const postIndex = (req, res) => {
 
 const cartController = {
     index,
-    postIndex
-    // show
+    postIndex,
+
 }
 
 export default cartController;

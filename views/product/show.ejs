@@ -36,29 +36,22 @@
 
                 <div class="list_management">
                     <div class="p-1 list_product">
-                        <a href="/product/show" style="text-decoration: none; color: white; font-size: 19px;">
+                        <a href="/product/show" style="text-decoration: none; color: chocolate; font-size: 19px;">
                         Product
                     </a>
 
                     </div>
                     <div class=" p-1 list_a">
-                        <a href="/detail/show" style="text-decoration: none; color: white; font-size: 19px;">
-                        Show detail
+                        <a href="/product/showCircle" style="text-decoration: none; color: white; font-size: 19px;">
+                        Circle
                     </a>
                     </div>
-                    <div class=" p-1 list_a">
-                        <a href="/product/colorShow" style="text-decoration: none; color: white; font-size: 19px;">
-                        Show color
-                    </a>
-                    </div>
+
                 </div>
             </div>
             <div class="p-3 " style=" flex-grow: 1; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 100%;">
                 <div class="d-flex" style="justify-content: space-between;">
-                    <div class="px-1">
-                        <button type="button" class="btn btn-success"><a href="/product/group"
-                style="color: white;  text-decoration: none;">Create Group</a></button>
-                    </div>
+
                     <div class="px-1">
                         <button type="button" class="btn btn-success"><a href="/product/create"
                         style="color: white;  text-decoration: none;">Create product</a></button>
@@ -128,7 +121,7 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Delete product</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -136,7 +129,9 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button style="background-color: red;" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <a href="/product/delete?id=<%= p.id%>">xoa</a>
+                                                        <div class="delete_modal">
+                                                            <a href="/product/delete?id=<%= p.id%> " style="color:white; text-decoration: none;">xoa</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

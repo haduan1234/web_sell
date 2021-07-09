@@ -1,18 +1,20 @@
 import db from '../db.js'
+
 const require = function(req, res, next) {
-    console.log("id la :", req.cookies)
-    if (typeof req.cookies == 'undefined') {
-        return res.render('user')
+
+    console.log("id_user :", typeof(req.body.id_user))
+    if (typeof req.body.id_user === 'string') {
+        return res.render('user/homeAdmin')
     } else {
-        let cookie = req.cookies.userId
-        let sql = "select * from user wherw id = " + cookie
+        let cookie = req.body.id_user
+        let sql = "select * from user where id = " + cookie
         db.query(sql, (error, results) => {
             if (error) throw error;
             else {
                 if (results.length > 0) {
                     next()
                 } else {
-                    res.render('user')
+                    return res.render('user/Admin')
                 }
             }
         })

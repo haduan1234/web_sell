@@ -37,22 +37,35 @@ const index = (req, res) => {
 
 const getDetail = (req, res) => {
     let id = req.query.id
-    if (typeof id !== "undefined") {
-        res.render('product/createDetail', {
-            id
-        })
-    }
-    res.render('product/createDetail')
+    let sql = "SELECT * FROM product_detail where id_product =" + id
+    db.query(sql, (error, results) => {
+        if (error) throw error;
+        else {
+            if (results.length > 0) {
+                if (typeof id !== "undefined") {
+                    res.render('product/createDetail', {
+                        id,
+                        product: results
+                    })
+                }
+            } else {
+                res.render('product/createDetail')
+            }
+        }
+    })
+
 }
 
 
 
 const createDetial = (req, res) => {
+    let id = req.body.id_product
+    console.log("id:", id)
     if (typeof req.body.id_product !== "undefined") {
         let detail = req.body
         let name = detail.name_detail
-        let sqlid = "Select * from product_detail where id_product=?"
-        db.query(sqlid, detail.id_product, (error, results) => {
+        let sqlid = "Select * from product_detail where id_product=" + id
+        db.query(sqlid, (error, results) => {
             if (error) throw error;
             else {
                 if (results.length > 0) {
@@ -62,7 +75,7 @@ const createDetial = (req, res) => {
                         else {
                             if (results.length > 0) {
                                 res.render('product/createDetail', {
-                                    id: req.body.id_product,
+                                    id,
                                     error: "key đã tồn tại"
                                 })
                             } else {
@@ -70,8 +83,20 @@ const createDetial = (req, res) => {
                                 db.query(sqlUpdate, detail, (error) => {
                                     if (error) throw error;
                                     else {
-                                        res.render('product/createDetail', {
-                                            id: req.body.id_product
+
+                                        let sql = "SELECT * FROM product_detail where id_product =" + id
+                                        db.query(sql, (error, results) => {
+                                            if (error) throw error;
+                                            else {
+                                                if (results.length > 0) {
+                                                    if (typeof id !== "undefined") {
+                                                        res.render('product/createDetail', {
+                                                            id,
+                                                            product: results
+                                                        })
+                                                    }
+                                                }
+                                            }
                                         })
                                     }
                                 })
@@ -84,8 +109,19 @@ const createDetial = (req, res) => {
                     db.query(sqlUpdate, detail, (error) => {
                         if (error) throw error;
                         else {
-                            res.render('product/createDetail', {
-                                id: req.body.id_product
+                            let sql = "SELECT * FROM product_detail where id_product =" + id
+                            db.query(sql, (error, results) => {
+                                if (error) throw error;
+                                else {
+                                    if (results.length > 0) {
+                                        if (typeof id !== "undefined") {
+                                            res.render('product/createDetail', {
+                                                id,
+                                                product: results
+                                            })
+                                        }
+                                    }
+                                }
                             })
                         }
                     })
@@ -98,13 +134,12 @@ const createDetial = (req, res) => {
 }
 
 const show = (req, res) => {
-
     let sql = "SELECT * FROM product_detail"
     db.query(sql, (error, results) => {
         if (error) throw error;
         else {
             if (results.length > 0) {
-                res.render('product/detailShow', {
+                res.render('product/createDetail', {
                     product: results
                 })
             }

@@ -163,12 +163,24 @@ const search = (req, res) => {
 }
 
 const color = (req, res) => {
+    let id = req.query.id
+    let sql = "SELECT * FROM product_color where id_product =" + id
+    db.query(sql, (error, results) => {
+        if (error) throw error;
+        else {
+            if (results.length > 0) {
+                if (typeof id !== "undefined") {
+                    res.render('product/createColor', {
+                        id,
+                        product: results
+                    })
+                }
+            } else {
+                res.render('product/createColor')
+            }
+        }
+    })
 
-    if (typeof req.query.id !== 'undefined') {
-        res.render('product/createColor', {
-            id: req.query.id
-        })
-    }
 }
 
 const addcolor = (req, res, ) => {
@@ -195,8 +207,19 @@ const addcolor = (req, res, ) => {
                                 db.query(sqlInsert, insert, (error, results) => {
                                     if (error) throw error
                                     else {
-                                        res.render('product/createColor', {
-                                            id
+                                        let sql = "SELECT * FROM product_color where id_product =" + id
+                                        db.query(sql, (error, results) => {
+                                            if (error) throw error;
+                                            else {
+                                                if (results.length > 0) {
+                                                    if (typeof id !== "undefined") {
+                                                        res.render('product/createColor', {
+                                                            id,
+                                                            product: results
+                                                        })
+                                                    }
+                                                }
+                                            }
                                         })
                                     }
                                 })
@@ -250,50 +273,44 @@ const searchColor = (req, res) => {
 
 }
 const productGroup = (req, res) => {
-    let sql = "SELECT * FROM product_group"
-    db.query(sql, (error, results) => {
-        if (error) throw error;
-        else {
-            res.render('product/createGroup', {
-                product: results
-            })
-        }
-    })
+    let id = req.query.id
+    if (typeof id !== 'undefined') {
+        let sqlid = "SELECT * FROM product_group where group_id =" + id
+        db.query(sqlid, (error, results) => {
+            if (error) throw error;
+            else {
+                res.render('product/createGroup', {
+                    product_group: results[0]
+                })
+            }
+        })
+    } else {
+        res.render('product/createGroup')
+    }
+
 }
 
 const postGroup = (req, res) => {
     req.body.group_avarta = req.file.path.split('\\').slice(1).join('\\')
     let product_group = req.body
-    if (typeof product_group.group_name !== 'undefined') {
-        let sqlname = "select  * from product_group where group_name =?"
-        db.query(sqlname, product_group.group_name, (error, results) => {
+    let id = product_group.group_id
+    if (typeof id !== 'undefined') {
+        let sqlid = "select  * from product_group where group_id =" + id
+        db.query(sqlid, (error, results) => {
             if (error) throw error;
             else {
                 if (results.length > 0) {
-                    let sql = "SELECT * FROM product_group"
-                    db.query(sql, (error, results) => {
+                    let sqlUpdate = "UPDATE product_group SET ? WHERE group_id =" + id
+                    db.query(sqlUpdate, product_group, (error, results) => {
                         if (error) throw error;
-                        else {
-                            res.render('product/createGroup', {
-                                product: results,
-                                error: "Nhóm đã tồn tại"
-                            })
-                        }
-                    })
-                } else {
-                    let sqlInsert = "INSERT INTO product_group SET ?"
-                    db.query(sqlInsert, product_group, (error, results) => {
-                        if (error) throw error
                         else {
                             let sql = "SELECT * FROM product_group"
                             db.query(sql, (error, results) => {
                                 if (error) throw error;
                                 else {
-                                    if (results.length > 0) {
-                                        res.render('product/createGroup', {
-                                            product: results
-                                        })
-                                    }
+                                    res.render('product/showCircle', {
+                                        product: results
+                                    })
                                 }
                             })
                         }
@@ -301,13 +318,103 @@ const postGroup = (req, res) => {
                 }
             }
         })
+    } else {
+        if (typeof product_group.group_name !== 'undefined') {
+            let sqlname = "select  * from product_group where group_name =?"
+            db.query(sqlname, product_group.group_name, (error, results) => {
+                if (error) throw error;
+                else {
+                    if (results.length > 0) {
+                        let sql = "SELECT * FROM product_group"
+                        db.query(sql, (error, results) => {
+                            if (error) throw error;
+                            else {
+                                res.render('product/createGroup', {
+                                    product: results,
+                                    error: "Nhóm đã tồn tại"
+                                })
+                            }
+                        })
+                    } else {
+                        let sqlInsert = "INSERT INTO product_group SET ?"
+                        db.query(sqlInsert, product_group, (error, results) => {
+                            if (error) throw error
+                            else {
+                                let sql = "SELECT * FROM product_group"
+                                db.query(sql, (error, results) => {
+                                    if (error) throw error;
+                                    else {
+                                        if (results.length > 0) {
+                                            res.render('product/createGroup', {
+                                                product: results
+                                            })
+                                        }
+                                    }
+                                })
+                            }
+                        })
+                    }
+                }
+            })
+        }
+
     }
-
 }
-
 const msProduct = (req, res) => {
     res.render('product/producrManagement')
 
+}
+
+const showCircle = (req, res) => {
+    let sql = "SELECT * FROM product_group"
+    db.query(sql, (error, results) => {
+        if (error) throw error;
+        else {
+            res.render('product/showCircle', {
+                product: results
+            })
+        }
+    })
+}
+
+const deleteCircle = (req, res) => {
+    let id = req.query.id
+    let sql = "Select * from product_group where group_id = " + id
+    db.query(sql, (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            if (results.length > 0) {
+                let sqlDelete = "delete from product_group where group_id = " + id
+                db.query(sqlDelete, (error) => {
+                    if (error) throw error;
+                    else {
+                        let sqlProduct = "Select * from product_group"
+                        db.query(sqlProduct, (error, results) => {
+                            if (error) {
+                                throw error;
+                            } else {
+                                res.render('product/showCircle', {
+                                    product: results
+                                })
+                            }
+                        })
+                    }
+                })
+            } else {
+                let sql = "SELECT * FROM product_group"
+                db.query(sql, (error, results) => {
+                    if (error) throw error;
+                    else {
+                        res.render('product/showCircle', {
+                            product: results,
+                            error: "Id không tồn tại"
+                        })
+                    }
+                })
+            }
+        }
+    })
 }
 
 const controllerProduct = {
@@ -322,7 +429,9 @@ const controllerProduct = {
     searchColor,
     productGroup,
     postGroup,
-    msProduct
+    msProduct,
+    showCircle,
+    deleteCircle
 }
 
 export default controllerProduct

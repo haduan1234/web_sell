@@ -17,4 +17,7 @@ route.get('/colorShow', controllerProduct.colorShow)
 route.get('/searchColor', controllerProduct.searchColor)
 route.get('/group', controllerProduct.productGroup)
 route.post('/group', upload.single('group_avarta'), controllerProduct.postGroup)
+route.get('/showCircle', controllerProduct.showCircle)
+route.get('/deleteCircle', controllerProduct.deleteCircle)
+
 export default route;

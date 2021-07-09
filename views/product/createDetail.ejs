@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container_body">
+    <div class="container-fluid container_body">
         <div class="pt-1">
             <div class="navi_admin pe-5">
                 <div class="management p-2 d-flex align-items-center">
@@ -32,10 +32,10 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex ">
+        <div class="d-flex">
             <div class="navi_management">
 
-                <div class="list_management">
+                <div class="list_a">
                     <div class="p-1 list_a">
                         <a href="/product/show" style="text-decoration: none; color: white; font-size: 19px;">
                         Product
@@ -43,57 +43,104 @@
 
                     </div>
                     <div class=" p-1 list_a">
-                        <a href="/detail/show" style="text-decoration: none; color: white; font-size: 19px;">
-                        Show detail
+                        <a href="/product/showCircle" style="text-decoration: none; color: white; font-size: 19px;">
+                            Circle
                     </a>
                     </div>
-                    <div class=" p-1 list_a">
-                        <a href="/product/colorShow" style="text-decoration: none; color: white; font-size: 19px;">
-                        Show color
-                    </a>
-                    </div>
+
                 </div>
             </div>
             <div>
                 <form action="/detail/create" method="post">
                     <div class="p-3">
                         <div class="row pb-2">
-                            <div class="col-md-6 col-sm-12">
-                                <div for="exampleFormControlFile1 d-block">id sản phẩm </div>
+                            <div class="col-md-6 col-sm-12 p-3">
+                                <h2 style="color: chocolate; " for="exampleFormControlFile1 d-block">Add New detail product </h2>
                                 <% if(typeof id !=="undefined" ) { %>
-                                    <input class="form-control form-control-lg" name="id_product" type="text" placeholder=".id_product" value="<%= id %>" aria-label=".form-control-lg example">
+                                    <input class="form-control form-control-lg" name="id_product" type="hidden" placeholder=".id_product" value="<%= id %>" aria-label=".form-control-lg example">
                                     <% } else { %>
-                                        <input class="form-control form-control-lg" name="id_product" type="text" placeholder=".id_product" aria-label=".form-control-lg example">
+                                        <input class="form-control form-control-lg" name="id_product" type="hidden" placeholder=".id_product" aria-label=".form-control-lg example">
                                         <% } %>
 
                             </div>
-                            <div class="row pb-2"></div>
-                            <div class="col-md-6 col-sm-12">
-                                <div for="exampleFormControlFile1 d-block">Tên chi tiết </div>
-                                <input class="form-control form-control-lg" name="name_detail" type="text" placeholder=".Name_detail" aria-label=".form-control-lg example">
+                            <div class="row pb-2" style="max-width: 1123px;">
+                                <div class="col-md-6 col-sm-12">
+                                    <div for="exampleFormControlFile1 d-block">Tên chi tiết </div>
+                                    <input class="form-control form-control-lg" name="name_detail" type="text" placeholder=".Name_detail" aria-label=".form-control-lg example">
 
-                                <% if(typeof error !=="undefined" ) { %>
-                                    <div class="error" style="color: red;">
-                                        <%= error %>
+                                    <% if(typeof error !=="undefined" ) { %>
+                                        <div class="error" style="color: red;">
+                                            <%= error %>
+                                        </div>
+                                        <% } %>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div for="exampleFormControlFile1 d-block">Nội dung chi tiết</div>
+                                    <input class="form-control form-control-lg" name="value_detail" type="text" placeholder=".Value_detail" aria-label="default input example">
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="stylebutton mt-3">ADD detail</button>
+                            </div>
+                            </from>
+                            <div class="container detail p-2" style=" border-bottom: 1px solid chocolate;">
+                                <div class="p-4" style="width: 100vw; height: 100vh; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 100%;">
+                                    <table class="table" style="max-width: 1045px;">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="">STT</th>
+                                                <th scope="col">name_detail</th>
+                                                <th scope="col">value_detail</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(typeof product !=="undefined" ) { %>
+                                                <% product.forEach(function(p, index){ %>
+                                                    <tr>
+                                                        <td class="table-primary pe-5">
+                                                            <%= index + 1 %>
+                                                        </td>
+                                                        <td class="table-primary pe-5">
+                                                            <%= p.name_detail %>
+                                                        </td>
+                                                        <td class="table-primary pe-5">
+                                                            <%= p.value_detail %>
+                                                        </td>
+                                                        <% }); %>
+                                                            <% } else { %>
+                                                                <tr>
+
+                                                                </tr>
+                                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                    <div class="naviPage ">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination">
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
                                     </div>
-                                    <% } %>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div for="exampleFormControlFile1 d-block">Nội dung chi tiết</div>
-                                <input class="form-control form-control-lg" name="value_detail" type="text" placeholder=".Value_detail" aria-label="default input example">
-                            </div>
-                        </div>
-
-                        <div>
-                            <button type="submit" class="stylebutton mt-3">ADD detail</button>
                         </div>
                     </div>
+
+
             </div>
         </div>
-        </from>
-
-    </div>
-    </div>
 
 
     </div>

@@ -26,6 +26,11 @@
                     <div class="amount">1</div>
                 </div>
                 <div class="account"><img class="image" src="/images/anh.jpg" alt="username"> </div>
+                <% if(typeof id_user !=="undefined" ) { %>
+                    <input type="hidden" class="id_user" value="<%= id_user%>">
+                    <% } else { %>
+                        <input type="hidden" class="id_user">
+                        <% } %>
             </div>
         </div>
         <div class="contener">
@@ -56,9 +61,11 @@
                     <div class="buy-more">
                         <i class="fas fa-cart-plus"></i> thêm giỏ hàng
                     </div>
-                    <a href="/cart?id=<%= product.id%>" style="text-decoration: none;">
-                        <div class="buy-buy">Mua ngay</div>
-                    </a>
+                    <div class="buy-more">
+                        <a href="/cart?id=<%= product.id%>" style="text-decoration: none;">
+                            <div class="buy-buy">Mua ngay</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,14 +120,10 @@
 <script>
     $(document).ready(function() {
         $(".buy-more").click(function() {
-            // console.log("anh:", $('.image__product').attr('src'))
-            // $.get("product/test", function(data, status) {
-            //     alert("Data: " + data.data + "\nStatus: " + status);
-            // });
-            console.log("id la:", $('.id_product').text().trim())
             $.post("cart/add", {
                     id_product: $('.id_product').text().trim(),
                     count: $('.count').text().trim(),
+                    id_user: $('.id_user').val().trim(),
                 },
                 function(data, status) {
                     alert("Data: " + data + "\nStatus: " + status);

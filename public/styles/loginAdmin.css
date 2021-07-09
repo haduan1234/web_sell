@@ -6,7 +6,7 @@
 .navi {
     width: 100%;
     height: 85px;
-    background-color: red;
+    background-color: chocolate;
 }
 
 .login_navi {
@@ -50,13 +50,13 @@
 }
 
 .name_form {
-    color: red;
+    color: chocolate;
 }
 
 .submit_button {
     width: 225px;
     height: 30px;
-    background-color: red;
+    background-color: chocolate;
     display: flex;
     flex-direction: column;
     align-items: center;
