@@ -49,8 +49,16 @@ const singIn = (req, res) => {
                     if (error) throw error;
                     else {
                         if (results.length > 0) {
-                            res.cookie('userId', results[0].id)
-                            res.redirect('/Home')
+                            if (results[0].permission == 1) {
+                                res.cookie('userId', results[0].id)
+                                res.render('product/productManagement')
+                                return;
+                            } else {
+                                res.cookie('userId', results[0].id)
+                                res.redirect('/home')
+                                return;
+                            }
+
                         } else {
                             res.render('user/index', {
                                 errorpass: "password không đúng",
@@ -75,9 +83,7 @@ const Admin = (req, res) => {
     res.render('user/homeAdmin')
 }
 
-const loginAdmin = (req, res) => {
-    res.render('user/loginAdmin')
-}
+
 const postloginAdmin = (req, res) => {
     if (typeof req.body.name !== 'undefined') {
         let name = req.body.name
@@ -118,9 +124,7 @@ const controllerUser = {
     getSignUp,
     createUser,
     singIn,
-    loginAdmin,
     Admin,
-    postloginAdmin
 
 }
 
